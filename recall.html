@@ -2,42 +2,69 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ショートカット表示テスト</title>
+<title>ショートカット表示</title>
 <style>
-  body { font-family: sans-serif; text-align: center; margin-top: 100px; }
-  #question { font-size: 24px; margin-bottom: 20px; }
-  button { font-size: 8px; padding: 5px 10px; margin: 5px; }
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    height: 100vh;
+  }
+
+  /* 問題文（中央） */
+  #question {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    text-align: center;
+    max-width: 80%;
+    word-break: break-word;
+  }
+
+  /* 右上：進捗 */
+  #progress {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    font-size: 14px;
+  }
+
+  /* ボタン共通 */
+  .btn {
+    position: fixed;
+    bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  /* 左下 */
+  #prevBtn {
+    left: 20px;
+  }
+
+  /* 右下 */
+  #nextBtn {
+    right: 20px;
+  }
 </style>
 </head>
 <body>
 
-<h2 id="question">クリックで開始</h2>
+<div id="progress"></div>
+<div id="question">クリックで開始</div>
 
-<div>
-  <button onclick="prev()">戻る</button>
-  <button onclick="next()">次へ</button>
-</div>
+<button id="prevBtn" class="btn" onclick="prev()">戻る</button>
+<button id="nextBtn" class="btn" onclick="next()">進む</button>
 
 <script>
-// ========================
-// データ（文字列のみ）
-// ========================
+// データ
 const shortcuts = [
-  "コピー",
-  "貼り付け",
-  "切り取り",
-  "元に戻す",
-  "保存",
-  "印刷",
-  "全選択",
-  "検索",
-  "置換",
-  "新規作成"
+  "コピー","貼り付け","切り取り","元に戻す","保存",
+  "印刷","全選択","検索","置換","新規作成"
 ];
 
-// ========================
 // シャッフル
-// ========================
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -46,46 +73,25 @@ function shuffle(array) {
   return array;
 }
 
-// ========================
-// 問題生成
-// ========================
-function getTodayQuestions() {
-  return shuffle([...shortcuts]).slice(0, 30);
-}
-
-// ========================
 // 状態
-// ========================
 let questions = [];
 let current = 0;
 
-// ========================
 // 初期化
-// ========================
 function start() {
-  questions = getTodayQuestions();
+  questions = shuffle([...shortcuts]).slice(0, 30);
   current = 0;
   render();
 }
 
-// ========================
 // 描画
-// ========================
 function render() {
-  const el = document.getElementById("question");
-
-  if (questions.length === 0) {
-    el.innerText = "データなし";
-    return;
-  }
-
-  el.innerText = questions[current] +
-    ` (${current + 1} / ${questions.length})`;
+  document.getElementById("question").innerText = questions[current];
+  document.getElementById("progress").innerText =
+    `${current + 1} / ${questions.length}`;
 }
 
-// ========================
 // 次へ
-// ========================
 function next() {
   if (current < questions.length - 1) {
     current++;
@@ -93,9 +99,7 @@ function next() {
   }
 }
 
-// ========================
 // 戻る
-// ========================
 function prev() {
   if (current > 0) {
     current--;
@@ -103,7 +107,6 @@ function prev() {
   }
 }
 
-// 初期化
 start();
 </script>
 
