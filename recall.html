@@ -58,10 +58,50 @@
 <button id="nextBtn" class="btn" onclick="next()">進む</button>
 
 <script>
-// データ
+const STORAGE_KEY = "shortcut_state";
+
+// 初期データ（実際は197件）
 const shortcuts = [
-  "コピー","貼り付け","切り取り","元に戻す","保存",
-  "印刷","全選択","検索","置換","新規作成"
+  "コピー",
+  "貼り付け",
+  "切り取り",
+  "元に戻す",
+  "保存",
+  "印刷",
+  "全選択",
+  "検索",
+  "置換",
+  "新規作成",
+  "コピー",
+  "貼り付け",
+  "切り取り",
+  "元に戻す",
+  "保存",
+  "印刷",
+  "全選択",
+  "検索",
+  "置換",
+  "新規作成",
+  "コピー",
+  "貼り付け",
+  "切り取り",
+  "元に戻す",
+  "保存",
+  "印刷",
+  "全選択",
+  "検索",
+  "置換",
+  "新規作成",
+  "コピー",
+  "貼り付け",
+  "切り取り",
+  "元に戻す",
+  "保存",
+  "印刷",
+  "全選択",
+  "検索",
+  "置換",
+  "新規作成"
 ];
 
 // シャッフル
@@ -73,13 +113,54 @@ function shuffle(array) {
   return array;
 }
 
+// 状態取得 or 初期化
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (saved) {
+    return JSON.parse(saved);
+  }
+
+  // 初回のみ
+  const shuffled = shuffle([...shortcuts]);
+
+  const state = {
+    order: shuffled,
+    index: 0
+  };
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  return state;
+}
+
+// 状態保存
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// 今日の問題取得
+function getTodayQuestions() {
+  const state = loadState();
+
+  const start = state.index;
+  const end = Math.min(start + 30, state.order.length);
+
+  const today = state.order.slice(start, end);
+
+  // 次回のために更新
+  state.index = end;
+  saveState(state);
+
+  return today;
+}
+
 // 状態
 let questions = [];
 let current = 0;
 
 // 初期化
 function start() {
-  questions = shuffle([...shortcuts]).slice(0, 30);
+  questions = getTodayQuestions();
   current = 0;
   render();
 }
