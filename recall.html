@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ショートカット表示テスト</title>
+<style>
+  body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+  #question { font-size: 24px; margin-bottom: 20px; }
+  button { font-size: 18px; padding: 10px 20px; }
+</style>
+</head>
+<body>
+
+<h2 id="question">クリックで開始</h2>
+<button onclick="showNext()">次へ</button>
+
+<script>
+// ========================
+// データ（テスト用）
+// ========================
+const shortcuts = [
+  { key: "Ctrl+C", desc: "コピー" },
+  { key: "Ctrl+V", desc: "貼り付け" },
+  { key: "Ctrl+X", desc: "切り取り" },
+  { key: "Ctrl+Z", desc: "元に戻す" },
+  { key: "Ctrl+S", desc: "保存" },
+  { key: "Ctrl+P", desc: "印刷" },
+  { key: "Ctrl+A", desc: "全選択" },
+  { key: "Ctrl+F", desc: "検索" },
+  { key: "Ctrl+H", desc: "置換" },
+  { key: "Ctrl+N", desc: "新規作成" }
+];
+
+// ========================
+// シャッフル（Fisher-Yates）
+// ========================
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// ========================
+// 今日の問題（最大30件）
+// ========================
+function getTodayQuestions() {
+  const shuffled = shuffle([...shortcuts]);
+  return shuffled.slice(0, 30);
+}
+
+// ========================
+// 状態
+// ========================
+let questions = [];
+let current = 0;
+
+// ========================
+// 初期化
+// ========================
+function start() {
+  questions = getTodayQuestions();
+  current = 0;
+}
+
+// ========================
+// 表示（クリックで1件ずつ）
+// ========================
+function showNext() {
+  const el = document.getElementById("question");
+
+  if (current >= questions.length) {
+    el.innerText = "終了";
+    return;
+  }
+
+  const q = questions[current];
+
+  el.innerText = `${q.desc} → ${q.key}`;
+
+  current++;
+}
+
+// 初期化実行
+start();
+
+</script>
+
+</body>
+</html>
