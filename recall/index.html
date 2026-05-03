@@ -22,6 +22,8 @@
 const STORAGE_KEY = "shortcut_state";
 const counts = 30;
 let shortcuts = [];
+let questions = [];
+let current = 0;
   
 // CSV読込
 async function loadCSV(csvPath) {
@@ -41,6 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const csvPath = appEl.dataset.csv.trim();
   const allData = await loadCSV(csvPath);
   shortcuts = allData.map(d => d.question);
+  start();
 });
 
 // フィッシャー・イェーツのシャッフル
@@ -99,10 +102,6 @@ function getTodayQuestions() {
   return today;
 }
 
-// 状態
-let questions = [];
-let current = 0;
-
 // 初期化
 function start() {
   questions = getTodayQuestions();
@@ -132,7 +131,6 @@ function prev() {
   }
 }
 
-start();
 </script>
 
 </body>
