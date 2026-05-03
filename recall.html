@@ -59,6 +59,7 @@
 
 <script>
 const STORAGE_KEY = "shortcut_state";
+const counts = 30;
 
 // 初期データ（実際は197件）
 const shortcuts = [
@@ -171,14 +172,14 @@ function saveState(state) {
 // 今日の問題取得
 function getTodayQuestions() {
   const state = loadState();
-  if (state.index > state.order.length - 30) {
+  if (state.index > state.order.length - counts) {
   // リセット
     state.order = shuffle([...shortcuts]);
     state.index = 0;
   }
 
   const start = state.index;
-  const end = Math.min(start + 30, state.order.length);
+  const end = Math.min(start + counts, state.order.length);
 
   const today = state.order.slice(start, end);
 
