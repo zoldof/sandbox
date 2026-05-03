@@ -158,8 +158,8 @@ function loadState() {
     order: shuffled,
     index: 0
   };
-
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  
+  saveState(state);
   return state;
 }
 
