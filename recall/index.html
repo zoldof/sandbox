@@ -10,15 +10,15 @@
 <div id="progress"></div>
 <div id="question">クリックで開始</div>
 
-<button id="prevBtn" class="btn" onclick="prev()">戻る</button>
-<button id="nextBtn" class="btn" onclick="next()">進む</button>
+<!-- <button id="prevBtn" class="btn" onclick="prev()">戻る</button> -->
+<!-- <button id="nextBtn" class="btn" onclick="next()">進む</button> -->
 
 <!-- CSV の場所を data-csv に埋め込む -->
 <div id="app" data-csv="data.csv"></div>
 
 <!--<script type="module" src="main.js"></script>-->
   
-<script>
+<script type="module">
 const STORAGE_KEY = "shortcut_state";
 const counts = 30;
 let shortcuts = [];
@@ -43,6 +43,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   const csvPath = appEl.dataset.csv.trim();
   const allData = await loadCSV(csvPath);
   shortcuts = allData.map(d => d.question);
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  prevBtn.addEventListener('click', () => {
+    if (current > 0) {
+      current--;
+      render();
+    }
+  });
+  nextBtn.addEventListener('click', () => {
+    if (current < questions.length - 1) {
+      current++;
+      render();
+    }
+  });
+  
   start();
 });
 
