@@ -67,8 +67,8 @@ async function loadCSV() {
   const text = await res.text();
 
   return text.trim().split("\n").slice(1).map(line => {
-    const [question, answer] = line.split(",");
-    return { question, answer };
+    const [answer, question] = line.split(",");
+    return { answer, question };
   });
 }
 
