@@ -60,80 +60,28 @@
 <script>
 const STORAGE_KEY = "shortcut_state";
 const counts = 30;
+  
+// CSV読込
+async function loadCSV() {
+  const res = await fetch("data.csv");
+  const text = await res.text();
 
-// 初期データ（実際は197件）
-const shortcuts = [
-  "コピー",
-  "貼り付け",
-  "切り取り",
-  "元に戻す",
-  "保存",
-  "印刷",
-  "全選択",
-  "検索",
-  "置換",
-  "新規作成",
-  "ほ",
-  "へ",
-  "ふ",
-  "ひ",
-  "は",
-  "の",
-  "ね",
-  "ぬ",
-  "に",
-  "な",
-  "と",
-  "て",
-  "つ",
-  "ち",
-  "た",
-  "そ",
-  "せ",
-  "う",
-  "し",
-  "さ",
-  "こ",
-  "け",
-  "く",
-  "き",
-  "か",
-  "お",
-  "え",
-  "う",
-  "い",
-  "あ",
-  "さs",
-  "こs",
-  "けs",
-  "くs",
-  "きs",
-  "かs",
-  "おs",
-  "えs",
-  "うs",
-  "いs",
-  "さq",
-  "こq",
-  "けq",
-  "くq",
-  "きq",
-  "かq",
-  "おq",
-  "えq",
-  "うq",
-  "いq",
-  "さっw",
-  "こw",
-  "けw",
-  "くw",
-  "きw",
-  "かw",
-  "おw",
-  "えw",
-  "うw",
-  "いw"
-];
+  return text.trim().split("\n").slice(1).map(line => {
+    const [question, answer] = line.split(",");
+    return { question, answer };
+  });
+}
+
+// 初期データ設定
+let shortcuts = [];
+
+async function init() {
+  const allData = await loadCSV();
+  // ★ここで射影
+  shortcuts = allData.map(d => d.question);
+  start();
+}
+init();
 
 // シャッフル
 function shuffle(array) {
