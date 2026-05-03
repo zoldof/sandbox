@@ -13,13 +13,18 @@
 <button id="prevBtn" class="btn" onclick="prev()">戻る</button>
 <button id="nextBtn" class="btn" onclick="next()">進む</button>
 
+<!-- CSV の場所を data-csv に埋め込む -->
+<div id="app" data-csv="data.csv"></div>
+
+<!--<script type="module" src="main.js"></script>-->
+  
 <script>
 const STORAGE_KEY = "shortcut_state";
 const counts = 30;
   
 // CSV読込
 async function loadCSV() {
-  const res = await fetch("data.csv");
+  const res = await fetch(csvPath);
   const text = await res.text();
 
   return text.trim().split("\n").slice(1).map(line => {
@@ -28,16 +33,14 @@ async function loadCSV() {
   });
 }
 
-// 初期データ設定
-let shortcuts = [];
-
-async function init() {
-  const allData = await loadCSV();
-  // ★ここで射影
-  shortcuts = allData.map(d => d.question);
-  start();
-}
-init();
+// 初期データ設定 
+// DOM が完成したらすぐ実行
+document.addEventListener("DOMContentLoaded", async () => {
+  const appEl   = document.getElementById("app");
+  const csvPath = appEl.dataset.csv.trim();
+  const allData = await loadCSV(csvPath);
+  const shortcuts = allData.map(d => d.question);
+});
 
 // フィッシャー・イェーツのシャッフル
 // デクリメントのデータの減少に合わせた効率的な並べ替えのアルゴリズム
