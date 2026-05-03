@@ -6,33 +6,37 @@
 <style>
   body { font-family: sans-serif; text-align: center; margin-top: 100px; }
   #question { font-size: 24px; margin-bottom: 20px; }
-  button { font-size: 10px; padding: 5px 10px; }
+  button { font-size: 8px; padding: 5px 10px; margin: 5px; }
 </style>
 </head>
 <body>
 
 <h2 id="question">クリックで開始</h2>
-<button onclick="showNext()">次へ</button>
+
+<div>
+  <button onclick="prev()">戻る</button>
+  <button onclick="next()">次へ</button>
+</div>
 
 <script>
 // ========================
-// データ（テスト用）
+// データ（文字列のみ）
 // ========================
 const shortcuts = [
-  { key: "Ctrl+C", desc: "コピー" },
-  { key: "Ctrl+V", desc: "貼り付け" },
-  { key: "Ctrl+X", desc: "切り取り" },
-  { key: "Ctrl+Z", desc: "元に戻す" },
-  { key: "Ctrl+S", desc: "保存" },
-  { key: "Ctrl+P", desc: "印刷" },
-  { key: "Ctrl+A", desc: "全選択" },
-  { key: "Ctrl+F", desc: "検索" },
-  { key: "Ctrl+H", desc: "置換" },
-  { key: "Ctrl+N", desc: "新規作成" }
+  "コピー",
+  "貼り付け",
+  "切り取り",
+  "元に戻す",
+  "保存",
+  "印刷",
+  "全選択",
+  "検索",
+  "置換",
+  "新規作成"
 ];
 
 // ========================
-// シャッフル（Fisher-Yates）
+// シャッフル
 // ========================
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -43,11 +47,10 @@ function shuffle(array) {
 }
 
 // ========================
-// 今日の問題（最大30件）
+// 問題生成
 // ========================
 function getTodayQuestions() {
-  const shuffled = shuffle([...shortcuts]);
-  return shuffled.slice(0, 30);
+  return shuffle([...shortcuts]).slice(0, 30);
 }
 
 // ========================
@@ -62,29 +65,46 @@ let current = 0;
 function start() {
   questions = getTodayQuestions();
   current = 0;
+  render();
 }
 
 // ========================
-// 表示（クリックで1件ずつ）
+// 描画
 // ========================
-function showNext() {
+function render() {
   const el = document.getElementById("question");
 
-  if (current >= questions.length) {
-    el.innerText = "終了";
+  if (questions.length === 0) {
+    el.innerText = "データなし";
     return;
   }
 
-  const q = questions[current];
-
-  el.innerText = `${q.desc} → ${q.key}`;
-
-  current++;
+  el.innerText = questions[current] +
+    ` (${current + 1} / ${questions.length})`;
 }
 
-// 初期化実行
-start();
+// ========================
+// 次へ
+// ========================
+function next() {
+  if (current < questions.length - 1) {
+    current++;
+    render();
+  }
+}
 
+// ========================
+// 戻る
+// ========================
+function prev() {
+  if (current > 0) {
+    current--;
+    render();
+  }
+}
+
+// 初期化
+start();
 </script>
 
 </body>
