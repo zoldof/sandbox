@@ -8,7 +8,7 @@
 <body>
 
 <div id="progress"></div>
-<div id="question">クリックで開始あ</div>
+<div id="question">クリックで開始</div>
 
 <button id="prevBtn" class="btn" onclick="prev()">戻る</button>
 <button id="nextBtn" class="btn" onclick="next()">進む</button>
@@ -21,6 +21,7 @@
 <script type="module">
 const STORAGE_KEY = "shortcut_state";
 const counts = 30;
+let shortcuts = [];
   
 // CSV読込
 async function loadCSV(csvPath) {
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const appEl   = document.getElementById("app");
   const csvPath = appEl.dataset.csv.trim();
   const allData = await loadCSV(csvPath);
-  const shortcuts = allData.map(d => d.question);
+  shortcuts = allData.map(d => d.question);
 });
 
 // フィッシャー・イェーツのシャッフル
