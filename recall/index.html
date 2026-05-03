@@ -23,7 +23,7 @@ const STORAGE_KEY = "shortcut_state";
 const counts = 30;
   
 // CSV読込
-async function loadCSV() {
+async function loadCSV(csvPath) {
   const res = await fetch(csvPath);
   const text = await res.text();
 
