@@ -140,12 +140,12 @@ function saveState(state) {
 
 // 今日の問題取得
 function getTodayQuestions() {
+  const state = loadState();
   if (state.index > state.order.length - 30) {
   // リセット
     state.order = shuffle([...shortcuts]);
     state.index = 0;
   }
-  const state = loadState();
 
   const start = state.index;
   const end = Math.min(start + 30, state.order.length);
