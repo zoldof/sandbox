@@ -24,10 +24,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   shortcuts = allData.map(d => d.question);
   
   const answBtn = document.getElementById('answBtn');
+  const shctBtn = document.getElementById('shctBtn');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
     const externalUrl = "https://github.com/zoldof/sandbox/blob/main/recall/data.csv";
+    window.open(externalUrl, '_blank', 'noopener,noreferrer');
+  });
+  shctBtn.addEventListener('click', () => {
+    const externalUrl = "https://zoldof.github.io/sandbox/recall/";
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   prevBtn.addEventListener('click', () => {
