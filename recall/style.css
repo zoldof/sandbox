@@ -21,24 +21,31 @@ body {
 #progress {
   position: fixed;
   top: 10px;
-  right: 15px;
+  right: 10px;
   font-size: 14px;
 }
 
 /* ボタン共通 */
 .btn {
   position: fixed;
-  bottom: 10px;
   padding: 5px 10px;
   font-size: 8px;
+}
+
+/* 左上 */
+#ansBtn {
+  left: 10px;
+  top: 10px;
 }
 
 /* 左下 */
 #prevBtn {
   left: 10px;
+  bottom: 10px;
 }
 
 /* 右下 */
 #nextBtn {
   right: 10px;
+  bottom: 10px;
 }
