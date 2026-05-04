@@ -19,31 +19,40 @@ async function loadCSV(csvPath) {
 // 初期データ設定 
 // DOM が完成したらすぐ実行
 document.addEventListener("DOMContentLoaded", async () => {
+  // htmlで指定したdataset.csvからパスを取得し1列の配列に整形
   const appEl   = document.getElementById("app");
   const csvPath = appEl.dataset.csv.trim();
   const allData = await loadCSV(csvPath);
   shortcuts = allData.map(d => d.question);
 
+  // 文字列のcsvPathをorigin含めた絶対URLに変換して抽出分割
   const origin = window.location.origin; 
   const csvUrl = new URL(csvPath, origin);
   const parts = csvUrl.pathname.split('/').filter(Boolean);
 
+  // 回答確認場所へのリンクパス作成部品
+  const user = csvUrl.hostname.split('.')[0];
+  const repo = parts[0];
+  const regex = new RegExp(`^/${repo}/`);
+
+  // エクセルショートカットの暗記用ページへのリンクパス作成部品
+  const segments = parts.splice(0, 3);
+
+  // 共用変数を定義
   let newPath = "";
   let externalUrl = "";
+
+  // 変数にボタン要素を格納
   const answBtn = document.getElementById('answBtn');
   const shctBtn = document.getElementById('shctBtn');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
-    const user = csvUrl.hostname.split('.')[0];
-    const repo = parts[0];
-    const regex = new RegExp(`^/${repo}/`);
     newPath = csvUrl.pathname.replace(regex, "");
     externalUrl = `https://github.com/${user}/${repo}/blob/main/${newPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
-    const segments = parts.splice(0, 3);
     newPath = segments.join('/');
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
