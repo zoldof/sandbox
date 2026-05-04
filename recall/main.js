@@ -29,9 +29,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
-    const repo = csvPath.pathname.split('/').filter(Boolean)[0];
+    const csvUrl = new URL(csvPath, window.location.origin);
+    const repo = csvUrl.pathname.split('/').filter(Boolean)[0];
     const regex = new RegExp(`^/${repo}/`);
-    const newPath = csvPath.pathname.replace(regex, "");
+    const newPath = csvUrl.pathname.replace(regex, "");
     externalUrl = `https://github.com/zoldof/sandbox/blob/main/${newPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
