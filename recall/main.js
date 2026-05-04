@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
-    const segments = parts.splice(3, 2);
+    const segments = parts.splice(1, 3);
     newPath = segments.join('/');
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
