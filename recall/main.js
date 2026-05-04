@@ -57,12 +57,12 @@ function loadState() {
   let state = "";
   if (saved) {
     state = JSON.parse(saved)
-    if (state.index <= state.order.length - 1) {
+    if (state.index < state.order.length - counts) {
       return state;
     }
   }
 
-  // 初回のみ
+  // 初回もしくは残存問題数が不足した場合
   const shuffled = shuffle([...shortcuts]);
 
   state = {
