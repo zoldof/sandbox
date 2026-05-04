@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   answBtn.addEventListener('click', () => {
     const repo = csvPath.pathname.split('/').filter(Boolean)[0];
     const regex = new RegExp(`^/${repo}/`);
-    const newPath = csvPath.pathname.replace(regex, "/");
+    const newPath = csvPath.pathname.replace(regex, "");
     externalUrl = `https://github.com/zoldof/sandbox/blob/main/${newPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
