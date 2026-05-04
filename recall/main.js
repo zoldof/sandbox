@@ -23,8 +23,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const allData = await loadCSV(csvPath);
   shortcuts = allData.map(d => d.question);
   
+  const answBtn = document.getElementById('answBtn');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  answBtn.addEventListener('click', () => {
+    const externalUrl = "https://github.com/zoldof/sandbox/blob/main/recall/data.csv";
+    window.open(externalUrl, '_blank', 'noopener,noreferrer');
+  });
   prevBtn.addEventListener('click', () => {
     if (current > 0) {
       current--;
