@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const allData = await loadCSV(csvPath);
   shortcuts = allData.map(d => d.question);
   
-  const externalUrl = "";
+  let externalUrl = "";
   const answBtn = document.getElementById('answBtn');
   const shctBtn = document.getElementById('shctBtn');
   const prevBtn = document.getElementById('prevBtn');
