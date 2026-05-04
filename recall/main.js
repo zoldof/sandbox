@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
-    externalUrl = `https://raw.githubusercontent.com/zoldof/sandbox/main/recall/${csvPath}`;
+    externalUrl = `https://github.com/zoldof/sandbox/blob/main/recall/${csvPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
