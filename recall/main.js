@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
-    const externalUrl = "https://zoldof.github.io/sandbox/recall/";
+    const externalUrl = "https://zoldof.github.io/sandbox/recall/shortcut/";
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   prevBtn.addEventListener('click', () => {
