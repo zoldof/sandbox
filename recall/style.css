@@ -3,9 +3,9 @@ html, body{
   margin:0;
 }
 body {
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: sans-serif;
 }
 
@@ -14,7 +14,7 @@ body {
   width: 80%;
   font-size: 24px;
   text-align: center;
-  word-break:break-word;
+  word-break: break-word;
 }
 
 /* 右上：進捗 */
