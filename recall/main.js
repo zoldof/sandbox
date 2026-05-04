@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
-    externalUrl = "https://zoldof.github.io/sandbox/recall/shortcut/";
+    externalUrl = "https://zoldof.github.io/sandbox/recall/excel/shortcut/";
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   prevBtn.addEventListener('click', () => {
