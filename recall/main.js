@@ -1,4 +1,5 @@
 const STORAGE_KEY = "shortcut_state";
+const general = "shortcut";
 const counts = 30;
 let shortcuts = [];
 let questions = [];
@@ -22,22 +23,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   const csvPath = appEl.dataset.csv.trim();
   const allData = await loadCSV(csvPath);
   shortcuts = allData.map(d => d.question);
-  
+
+  const origin = window.location.origin; 
+  const csvUrl = new URL(csvPath, origin);
+  const parts = csvUrl.pathname.split('/');
+
+  let newPath = "";
   let externalUrl = "";
   const answBtn = document.getElementById('answBtn');
   const shctBtn = document.getElementById('shctBtn');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
-    const csvUrl = new URL(csvPath, window.location.origin);
-    const repo = csvUrl.pathname.split('/').filter(Boolean)[0];
+    const repo = parts.filter(Boolean)[0];
     const regex = new RegExp(`^/${repo}/`);
-    const newPath = csvUrl.pathname.replace(regex, "");
-    externalUrl = `https://github.com/zoldof/sandbox/blob/main/${newPath}`;
+    newPath = csvUrl.pathname.replace(regex, "");
+    externalUrl = `https://github.com/zoldof/${repo}/blob/main/${newPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
-    externalUrl = "https://zoldof.github.io/sandbox/recall/excel/shortcut/";
+    const segments = parts.splice(-2, 2);
+    newPath = segments.join('/');
+    externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   prevBtn.addEventListener('click', () => {
