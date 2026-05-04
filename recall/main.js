@@ -35,10 +35,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
+    const user = csvUrl.hostname.split('/');
     const repo = parts[0];
     const regex = new RegExp(`^/${repo}/`);
     newPath = csvUrl.pathname.replace(regex, "");
-    externalUrl = `https://github.com/zoldof/${repo}/blob/main/${newPath}`;
+    externalUrl = `https://github.com/${user}/${repo}/blob/main/${newPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
