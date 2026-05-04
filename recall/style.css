@@ -6,13 +6,14 @@ body {
 
 /* 問題文（中央） */
 #question {
-  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 80%;
   font-size: 24px;
   word-break: break-word;
   text-align: center;
-  align-items: center;
-  justify-content: center;
+  transform: translate(-50%, -50%);
 }
 
 /* 右上：進捗 */
