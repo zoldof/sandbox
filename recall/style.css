@@ -1,4 +1,7 @@
 body {
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-family: sans-serif;
   margin: 0;
   height: 100vh;
@@ -6,14 +9,10 @@ body {
 
 /* 問題文（中央） */
 #question {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: 80%;
   font-size: 24px;
-  word-break: break-word;
   text-align: center;
-  transform: translate(-50%, -50%);
+  word-break:break-word;
 }
 
 /* 右上：進捗 */
