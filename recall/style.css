@@ -38,6 +38,12 @@ body {
   top: 10px;
 }
 
+/* 左上2個目 */
+#shctBtn {
+  left: 48px;
+  top: 10px;
+}
+
 /* 左下 */
 #prevBtn {
   left: 10px;
