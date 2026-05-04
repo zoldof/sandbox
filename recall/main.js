@@ -57,8 +57,9 @@ function loadState() {
   let state = "";
   if (saved) {
     state = JSON.parse(saved)
-    if (state.index <= state.order.length - 1) 
-    return state;
+    if (state.index <= state.order.length - 1) {
+      return state;
+    }
   }
 
   // 初回のみ
