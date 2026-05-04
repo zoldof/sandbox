@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const origin = window.location.origin; 
   const csvUrl = new URL(csvPath, origin);
-  const parts = csvUrl.pathname.split('/');
+  const parts = csvUrl.pathname.split('/').filter(Boolean);
 
   let newPath = "";
   let externalUrl = "";
@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   answBtn.addEventListener('click', () => {
-    const repo = parts.filter(Boolean)[0];
+    const repo = parts[0];
     const regex = new RegExp(`^/${repo}/`);
     newPath = csvUrl.pathname.replace(regex, "");
     externalUrl = `https://github.com/zoldof/${repo}/blob/main/${newPath}`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
-    const segments = parts.splice(1, 3);
+    const segments = parts.splice(0, 2);
     newPath = segments.join('/');
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
