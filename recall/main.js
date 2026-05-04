@@ -54,15 +54,17 @@ function shuffle(array) {
 // 状態取得 or 初期化
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
-
+  let state = "";
   if (saved) {
-    return JSON.parse(saved);
+    state = JSON.parse(saved)
+    if (state.index <= state.order.length - 1) 
+    return state;
   }
 
   // 初回のみ
   const shuffled = shuffle([...shortcuts]);
 
-  const state = {
+  state = {
     order: shuffled,
     index: 0
   };
@@ -79,15 +81,8 @@ function saveState(state) {
 // 今日の問題取得
 function getTodayQuestions() {
   const state = loadState();
-  if (state.index > state.order.length - counts) {
-  // リセット
-    state.order = shuffle([...shortcuts]);
-    state.index = 0;
-  }
-
   const start = state.index;
   const end = Math.min(start + counts, state.order.length);
-
   const today = state.order.slice(start, end);
 
   // 次回のために更新
