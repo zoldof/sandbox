@@ -2,9 +2,9 @@
 // ① 定数・グローバル変数
 // -----------------------------------------------------------------
 
-const STORAGE_KEY = "shortcut_state";
 const general = "shortcut";
 const counts = 30;
+let STORAGE_KEY = "";
 let shortcuts = [];
 let questions = [];
 let current = 0;
@@ -131,6 +131,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const csvUrl = new URL(csvPath, origin);
   const parts = csvUrl.pathname.split('/').filter(Boolean);
 
+  // STORAGE_KEYの振り分け
+  STORAGE_KEY = parts[3];
+  
   // 回答確認場所へのリンクパス作成部品
   const user = csvUrl.hostname.split('.')[0];
   const repo = parts[0];
