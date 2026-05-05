@@ -97,18 +97,18 @@ function start() {
   render();
 }
 
-// 次へ
-function next() {
-  if (current < questions.length - 1) {
-    current++;
-    render();
-  }
-}
-
 // 戻る
 function prev() {
   if (current > 0) {
     current--;
+    render();
+  }
+}
+
+// 次へ
+function next() {
+  if (current < questions.length - 1) {
+    current++;
     render();
   }
 }
