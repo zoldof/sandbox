@@ -52,6 +52,11 @@ body {
   top: 10px;
 }
 
+#action {
+  left: 96px;
+  bottom: 10px;
+}
+
 /* 左下 */
 #prevBtn {
   left: 10px;
