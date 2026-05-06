@@ -33,7 +33,6 @@ export function createNavigator({slides, initial = 0, render}) {
     nextBtn = nBtn;
     prevBtn.addEventListener("click", prev);
     nextBtn.addEventListener("click", next);
-    updateButtons(); 
   }
 
   function updateButtons() {
@@ -41,8 +40,7 @@ export function createNavigator({slides, initial = 0, render}) {
     nextBtn.disabled = current === data.length - 1;
   }
 
-  // ==== 補助メソッド ====
-  function getIndex() { return current; }
+  // ==== 初回表示や目的スライドの表示 ====
   function goTo(idx) {
     const i = Math.max(0, Math.min(idx, data.length - 1));
     if (i !== current) {
@@ -51,6 +49,9 @@ export function createNavigator({slides, initial = 0, render}) {
       updateButtons(); 
     }
   }
+
+  // ==== 補助メソッド ====
+  function getIndex() { return current; }
 
   // API をオブジェクトで返す
   return {prev, next, bindButtons, updateButtons, getIndex, goTo};
