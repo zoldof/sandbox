@@ -7,11 +7,57 @@
   <link rel="stylesheet" href="/sandbox/recall/style.css">
 </head>
 <body>
-  <div id="app" data-csv="/sandbox/recall/excel/a-process/data.csv"></div>
   <div id="progress"></div>
-  <div id="question"></div>
+  <div id="question" class="slide-container"></div>
+  <button id="answBtn" class="btn" hidden>◯</button>
+  <button id="shctBtn" class="btn" hidden>◇</button>
   <button id="prevBtn" class="btn">＜</button>
   <button id="nextBtn" class="btn">＞</button>
-  <script src="/sandbox/recall/main.js"></script>
+
+  <script type="module">
+    import {createNavigator} from "./js/nav.js";
+
+    // ---------- スライドデータ ----------
+    const slides = [
+      {src:"images/01.jpg", alt:"山",  caption:"山の風景"},
+      {src:"images/02.jpg", alt:"森",  caption:"森の小径"},
+      {src:"images/03.jpg", alt:"砂漠",caption:"砂漠の夕陽"}
+    ];
+
+    // ---------- 描画関数 ----------
+    function renderImg(item, idx) {
+      // 画像＋キャプションを #question に描画
+      const el = document.getElementById("question");
+      el.innerHTML = `
+        <img src="${item.src}" alt="${item.alt}" class="slide-img">
+        <div class="caption">${item.caption}</div>
+      `;
+
+      // 右上の進捗を更新
+      const prog = document.getElementById("progress");
+      prog.textContent = `${idx + 1} / ${slides.length}`;
+    }
+
+    // ---------- ナビゲータ作成 ----------
+    const nav = createNavigator({slides, render: renderImg});
+
+    // ボタンをナビと結び付け
+    nav.bindButtons(
+      document.getElementById("prevBtn"),
+      document.getElementById("nextBtn")
+    );
+
+    // 「答えを見る」・「シークレット」ボタンは自由に実装
+    document.getElementById("answBtn").addEventListener("click", () => {
+      alert(slides[nav.getIndex()].caption);
+    });
+    document.getElementById("shctBtn").addEventListener("click", () => {
+      console.log("シークレットボタンがクリックされました");
+    });
+
+    // 初回描画
+    renderImg(slides[0], 0);
+  </script>
 </body>
 </html>
+
