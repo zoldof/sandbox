@@ -25,5 +25,10 @@
   <button id="prevBtn" class="btn">＜</button>
   <button id="nextBtn" class="btn">＞</button>
   <script src="/sandbox/recall/main.js"></script>
+  <script>
+    document.getElementById('navSelect').addEventListener('change', function () {
+      if (this.value) location.href = url;
+    });
+  </script>
 </body>
 </html>
