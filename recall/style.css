@@ -17,6 +17,14 @@ body {
   word-break: break-word;
 }
 
+/* 画像の出題 */
+.slide-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
 /* 右上：進捗 */
 #progress {
   position: fixed;
