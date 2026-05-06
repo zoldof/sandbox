@@ -7,12 +7,15 @@ export function createNavigator({slides, initial = 0, render}) {
   /* @type {Array<unknown>} */
   const data = slides;            // ただの参照、型は呼び出し側が決める
   let current = initial;
+  let prevBtn = null;
+  let nextBtn = null;
 
   // ==== インデックス操作 ====
   function prev() {
     if (current > 0) {
       current--;
       render(data[current], current);   // ← データと index を渡す
+      updateButtons(); 
     }
   }
 
@@ -20,14 +23,17 @@ export function createNavigator({slides, initial = 0, render}) {
     if (current < data.length - 1) {
       current++;
       render(data[current], current);
+      updateButtons(); 
     }
   }
 
   // ==== UI バインディング ====
-  function bindButtons(prevBtn, nextBtn) {
+  function bindButtons(pBtn, nBtn) {
+    prevBtn = pBtn;
+    nextBtn = nBtn;
     prevBtn.addEventListener("click", prev);
     nextBtn.addEventListener("click", next);
-    updateButtons(prevBtn, nextBtn);
+    updateButtons(); 
   }
 
   function updateButtons(prevBtn, nextBtn) {
@@ -42,7 +48,7 @@ export function createNavigator({slides, initial = 0, render}) {
     if (i !== current) {
       current = i;
       render(data[current], current);
-      // ボタン状態は呼び出し側が必要なら手動で updateButtons
+      updateButtons(); 
     }
   }
 
