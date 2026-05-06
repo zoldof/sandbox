@@ -19,9 +19,9 @@
 
     // ---------- スライドデータ ----------
     const slides = [
-      {src:"images/01.jpg", alt:"山",  caption:"山の風景"},
-      {src:"images/02.jpg", alt:"森",  caption:"森の小径"},
-      {src:"images/03.jpg", alt:"砂漠",caption:"砂漠の夕陽"}
+      {src:"images/01.jpg"},
+      {src:"images/02.jpg"},
+      {src:"images/03.jpg"}
     ];
 
     // ---------- 描画関数 ----------
@@ -46,14 +46,6 @@
       document.getElementById("prevBtn"),
       document.getElementById("nextBtn")
     );
-
-    // 「答えを見る」・「シークレット」ボタンは自由に実装
-    document.getElementById("answBtn").addEventListener("click", () => {
-      alert(slides[nav.getIndex()].caption);
-    });
-    document.getElementById("shctBtn").addEventListener("click", () => {
-      console.log("シークレットボタンがクリックされました");
-    });
 
     // 初回描画
     renderImg(slides[0], 0);
