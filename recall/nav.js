@@ -36,7 +36,7 @@ export function createNavigator({slides, initial = 0, render}) {
     updateButtons(); 
   }
 
-  function updateButtons(prevBtn, nextBtn) {
+  function updateButtons() {
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === data.length - 1;
   }
