@@ -97,6 +97,13 @@ function start() {
   render();
 }
 
+// 回答
+function answ() {
+  newPath = csvUrl.pathname.replace(regex, "");
+  externalUrl = `https://github.com/${user}/${repo}/blob/main/${newPath}`;
+  location.href = externalUrl;
+}
+
 // 戻る
 function prev() {
   if (current > 0) {
@@ -153,11 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const nextBtn = document.getElementById('nextBtn');
 
   // イベントハンドラ設定
-  answBtn.addEventListener('click', () => {
-    newPath = csvUrl.pathname.replace(regex, "");
-    externalUrl = `https://github.com/${user}/${repo}/blob/main/${newPath}`;
-    window.open(externalUrl, '_blank', 'noopener,noreferrer');
-  });
+  answBtn.addEventListener('click', answ);
   shctBtn.addEventListener('click', () => {
     newPath = segments.join('/');
     externalUrl = `${origin}/${newPath}/${general}/`;
