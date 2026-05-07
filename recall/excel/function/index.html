@@ -15,25 +15,18 @@
   <div id="question"></div>
   <select id="navSelect">
     <option value="" selected disabled hidden></option>
-    <option value="1">回答一覧</option>
     <option value="/sandbox/recall/excel/function/index.html">エクセル関数</option>
     <option value="/sandbox/recall/excel//shortcut/index.html">エクセルショートカット</option>
     <option value="/sandbox/recall/a-process/index.html">アクションプロセス</option>
   </select>
-  <button id="answBtn" class="btn">◇</button>
+  <button id="answBtn" class="btn">◯</button>
   <button id="shctBtn" class="btn">◇</button>
   <button id="prevBtn" class="btn">＜</button>
   <button id="nextBtn" class="btn">＞</button>
   <script src="/sandbox/recall/main.js"></script>
   <script>
     document.getElementById('navSelect').addEventListener('change', function () {
-      const v = this.value;
-      if (!v) return;
-      if (v === '1') {
-        answ();
-      } else {
-        location.href = v;
-      }
+      if (this.value) location.href = this.value;
     });
   </script>
 </body>
