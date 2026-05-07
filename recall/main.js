@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   answBtn.addEventListener('click', () => {
     newPath = csvUrl.pathname.replace(regex, "");
     externalUrl = `https://github.com/${user}/${repo}/blob/main/${newPath}`;
-    location.href = externalUrl;
+    window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   shctBtn.addEventListener('click', () => {
     newPath = segments.join('/');
