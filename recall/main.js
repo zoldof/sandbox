@@ -176,7 +176,6 @@ nav.bindButtons(
 );
 
 // 初回描画
-render(shuffledSlides[0], 0);
 nav.updateButtons(); 
 */
 
