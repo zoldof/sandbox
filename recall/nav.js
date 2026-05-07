@@ -10,7 +10,7 @@ export function createNavigator({slides, initial = 0, render}) {
   let prevBtn = null;
   let nextBtn = null;
 
-  // ==== 描画関数における引数の場合分け ====
+  // ==== 描画引数の場合分け & ボタン更新  ====
   function callRender(item, idx) {
     const arity = render.length;
     if (arity === 0) {
@@ -20,6 +20,7 @@ export function createNavigator({slides, initial = 0, render}) {
     } else {
       render(item, idx);
     }
+    updateButtons();
   }
 
   // ==== インデックス操作 ====
@@ -27,7 +28,6 @@ export function createNavigator({slides, initial = 0, render}) {
     if (current > 0) {
       current--;
       callRender(data[current], current);   // ← データと index を渡す
-      updateButtons(); 
     }
   }
 
@@ -35,7 +35,6 @@ export function createNavigator({slides, initial = 0, render}) {
     if (current < data.length - 1) {
       current++;
       callRender(data[current], current);
-      updateButtons(); 
     }
   }
 
@@ -59,7 +58,6 @@ export function createNavigator({slides, initial = 0, render}) {
     if (i !== current) {
       current = i;
       callRender(data[current], current);
-      updateButtons(); 
     }
   }
 
