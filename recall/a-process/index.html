@@ -27,13 +27,12 @@
   <script type="module">
     import { shuffle } from "/sandbox/recall/main.js";
     import { createNavigator } from "/sandbox/recall/nav.js";
-    
+
     // ---------- スライドデータ ----------
-    const slides = [
-      {src:"images/01.jpg"},
-      {src:"images/02.jpg"},
-      {src:"images/03.jpg"}
-    ];
+    const TOTAL_IMAGES = 3;
+    const slides = Array.from({ length: TOTAL_IMAGES }, (_, i) => ({
+      src: `images/${String(i + 1).padStart(2, '0')}.jpg`
+    }));
 
     // ---------- ランダム化 ----------
     // 元の slides 配列は残したい場合はコピーしてからシャッフル
