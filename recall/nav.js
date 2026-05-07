@@ -10,6 +10,18 @@ export function createNavigator({slides, initial = 0, render}) {
   let prevBtn = null;
   let nextBtn = null;
 
+  // ==== 描画関数における引数の場合分け ====
+  function callRender(item, idx) {
+    const arity = render.length;
+    if (arity === 0) {
+      render();
+    } else if (arity === 1) {
+      render(item);
+    } else {
+      render(item, idx);
+    }
+  }
+
   // ==== インデックス操作 ====
   function prev() {
     if (current > 0) {
