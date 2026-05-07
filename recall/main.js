@@ -2,7 +2,7 @@
 // ① 定数・グローバル変数
 // -----------------------------------------------------------------
 
-const general = "shortcut";
+const general = "shortcut"; // 現状ではデフォルトショートカット機能は未使用
 const counts = 30;
 let STORAGE_KEY = "";
 let shortcuts = [];
