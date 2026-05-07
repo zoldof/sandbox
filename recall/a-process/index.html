@@ -29,10 +29,18 @@
     import { createNavigator } from "/sandbox/recall/nav.js";
 
     // ---- 画像ファイルを取得 & 件数取得 ----
-    const TOTAL_IMAGES = 7;
-    const slides = Array.from({ length: TOTAL_IMAGES }, (_, i) => ({
-      src: `images/${String(i + 1).padStart(2, '0')}.jpg`
-    }));
+    async function loadSlides(max = 30) {
+      const slides = [];
+      for (let i = 1; i <= max; i++) {
+        const file = `images/${String(i).padStart(2, '0')}.jpg`;
+        const res = await fetch(file, {method: 'HEAD'});
+        if (!res.ok) break;
+        slides.push({ src: file });
+      }
+      return slides;
+    }
+
+    const slides = await loadSlides();
 
     // ---------- ランダム化 ----------
     // 元の slides 配列は残したい場合はコピーしてからシャッフル
