@@ -1,4 +1,4 @@
-import { shuffle } from "./util.js";
+import { shuffle } from "/sandbox/recall/util.js/";
 
 // -----------------------------------------------------------------
 // ① 定数・グローバル変数
