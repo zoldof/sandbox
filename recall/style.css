@@ -58,6 +58,10 @@ body {
   top: 10px;
 }
 
+select{
+  width: 40px;
+}
+
 /* 左下 */
 #prevBtn {
   left: 10px;
