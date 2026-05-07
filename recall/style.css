@@ -55,11 +55,8 @@ body {
 #navSelect {
   position: absolute;
   left: 48px;
-  top: 10px;
-}
-
-select{
-  width: 15px;
+  top: 14px;
+  width: 20px;
 }
 
 /* 左下 */
