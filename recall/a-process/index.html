@@ -29,9 +29,8 @@
     import { createNavigator } from "/sandbox/recall/nav.js";
 
     // ---- 画像ファイルを取得 & 件数取得 ----
-    const imageModules = import.meta.glob(
-      '/sandbox/recall/a-process/images/*.jpg',
-      { eager: true }
+    const imageModules = import.meta.globEager(
+      '/sandbox/recall/a-process/images/*.jpg'
     );
     const TOTAL_IMAGES = Object.keys(imageModules).length;
     const slides = Array.from({ length: TOTAL_IMAGES }, (_, i) => ({
