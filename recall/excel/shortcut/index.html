@@ -10,10 +10,21 @@
   <div id="app" data-csv="/sandbox/recall/excel/shortcut/data.csv"></div>
   <div id="progress"></div>
   <div id="question"></div>
+  <select id="navSelect">
+    <option value="" selected disabled hidden></option>
+    <option value="/sandbox/recall/excel/function/">エクセル関数</option>
+    <option value="/sandbox/recall/excel/shortcut/">エクセルショートカット</option>
+    <option value="/sandbox/recall/a-process/">アクションプロセス</option>
+  </select>
   <button id="answBtn" class="btn">◯</button>
   <button id="shctBtn" class="btn" hidden>◇</button>
   <button id="prevBtn" class="btn">＜</button>
   <button id="nextBtn" class="btn">＞</button>
   <script src="/sandbox/recall/main.js"></script>
+  <script>
+    document.getElementById('navSelect').addEventListener('change', function () {
+      if (this.value) location.href = this.value;
+    });
+  </script>
 </body>
 </html>
