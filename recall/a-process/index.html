@@ -32,9 +32,8 @@
     const imageModules = import.meta.globEager(
       '/sandbox/recall/a-process/images/*.jpg'
     );
-    const TOTAL_IMAGES = Object.keys(imageModules).length;
-    const slides = Array.from({ length: TOTAL_IMAGES }, (_, i) => ({
-      src: `images/${String(i + 1).padStart(2, '0')}.jpg`
+    const slides = Object.entries(imageModules).map(([path, mod]) => ({
+      src: mod.default
     }));
 
     // ---------- ランダム化 ----------
