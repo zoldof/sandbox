@@ -28,8 +28,12 @@
     import { shuffle } from "/sandbox/recall/util.js";
     import { createNavigator } from "/sandbox/recall/nav.js";
 
-    // ---------- スライドデータ ----------
-    const TOTAL_IMAGES = 7;
+    // ---- 画像ファイルを取得 & 件数取得 ----
+    const imageModules = import.meta.glob(
+      '/sandbox/recall/a-process/images/*.jpg',
+      { eager: true }
+    );
+    const TOTAL_IMAGES = Object.keys(imageModules).length;
     const slides = Array.from({ length: TOTAL_IMAGES }, (_, i) => ({
       src: `images/${String(i + 1).padStart(2, '0')}.jpg`
     }));
