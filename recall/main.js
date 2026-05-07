@@ -162,3 +162,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   start();
 });
 
+
+/*
+import { createNavigator } from "/sandbox/recall/nav.js";
+
+// ---------- ナビゲータ作成 ----------
+const nav = createNavigator({slides :shuffled, render: render});
+
+// ボタンをナビと結び付け
+nav.bindButtons(
+  document.getElementById("prevBtn"),
+  document.getElementById("nextBtn")
+);
+
+// 初回描画
+render(shuffledSlides[0], 0);
+nav.updateButtons(); 
+*/
+
