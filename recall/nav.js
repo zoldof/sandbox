@@ -26,7 +26,7 @@ export function createNavigator({slides, initial = 0, render}) {
   function prev() {
     if (current > 0) {
       current--;
-      render(data[current], current);   // ← データと index を渡す
+      callRender(data[current], current);   // ← データと index を渡す
       updateButtons(); 
     }
   }
@@ -34,7 +34,7 @@ export function createNavigator({slides, initial = 0, render}) {
   function next() {
     if (current < data.length - 1) {
       current++;
-      render(data[current], current);
+      callRender(data[current], current);
       updateButtons(); 
     }
   }
@@ -58,7 +58,7 @@ export function createNavigator({slides, initial = 0, render}) {
     const i = Math.max(0, Math.min(idx, data.length - 1));
     if (i !== current) {
       current = i;
-      render(data[current], current);
+      callRender(data[current], current);
       updateButtons(); 
     }
   }
