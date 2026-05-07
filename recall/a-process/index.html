@@ -25,6 +25,7 @@
     });
   </script>
   <script type="module">
+    import { shuffle } from "/sandbox/recall/main.js";
     import { createNavigator } from "/sandbox/recall/nav.js";
     
     // ---------- スライドデータ ----------
@@ -33,6 +34,10 @@
       {src:"images/02.jpg"},
       {src:"images/03.jpg"}
     ];
+
+    // ---------- ランダム化 ----------
+    // 元の slides 配列は残したい場合はコピーしてからシャッフル
+    const shuffledSlides = shuffle([...slides]);
 
     // ---------- 描画関数 ----------
     function renderImg(item, idx) {
@@ -46,7 +51,7 @@
     }
 
     // ---------- ナビゲータ作成 ----------
-    const nav = createNavigator({slides, render: renderImg});
+    const nav = createNavigator({slides :shuffledSlides, render: renderImg});
 
     // ボタンをナビと結び付け
     nav.bindButtons(
