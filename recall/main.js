@@ -1,3 +1,5 @@
+import { shuffle } from "/sandbox/recall/util.js";
+
 // -----------------------------------------------------------------
 // ① 定数・グローバル変数
 // -----------------------------------------------------------------
@@ -22,16 +24,6 @@ async function loadCSV(csvPath) {
     const [answer, question] = line.split(",");
     return { answer, question };
   });
-}
-
-// フィッシャー・イェーツのシャッフル
-// デクリメントのデータの減少に合わせた効率的な並べ替えのアルゴリズム
-export function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
 }
 
 // -----------------------------------------------------------------
