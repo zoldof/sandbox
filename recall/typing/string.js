@@ -1,7 +1,10 @@
 import { randomString } from 'sandbox/recall/util.js';
 
+const cnt = 10;
+const len = 8;
+
 // ---------- 10問生成 ----------
-function generateProblems(count = 10, length = 8) {
+function generateProblems(count, length) {
   const problems = [];
   for (let i = 0; i < count; i++) {
     problems.push({
@@ -12,7 +15,7 @@ function generateProblems(count = 10, length = 8) {
   return problems;
 }
 
-const problems = generateProblems();   // ページ読み込み時に一度だけ作成
+const problems = generateProblems(cnt, len);   // ページ読み込み時に一度だけ作成
 
 // ---------- 表示 ----------
 function renderProblem(problem, idx) {
