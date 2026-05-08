@@ -8,12 +8,7 @@
 </head>
 <body>
   <template id="uiTemplate"></template>
-  <script type="module">
-    const src = await fetch('/sandbox/recall/ui.html').then(r => r.text());
-    const tmpl = document.getElementById('uiTemplate');
-    tmpl.innerHTML = src.trim();
-    document.body.appendChild(tmpl.content.cloneNode(true));
-  </script>
+  <script type="module" src="/sandbox/recall/a-process/call-tmpl_ui.js"></script>
   <script type="module" src="/sandbox/recall/a-process/slide.js"></script>
   <script defer src="/sandbox/recall/select.js"></script>
 </body>
