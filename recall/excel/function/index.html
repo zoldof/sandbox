@@ -12,12 +12,10 @@
   <!-- CSV の場所を data-csv に埋め込む -->
   <div id="app" data-csv="/sandbox/recall/excel/function/data.csv"></div>
   <!-- ここにテンプレートが注入される -->
-  <template id="uiTemplate"></template>
+  <div id="uiContainer"></div>
   <script type="module">
     const src = await fetch('/sandbox/recall/ui.html').then(r => r.text());
-    const tmpl = document.getElementById('uiTemplate');
-    tmpl.innerHTML = src.trim();
-    document.body.appendChild(tmpl.content.cloneNode(true));
+    document.getElementById('uiContainer').innerHTML = src.trim();
   </script>
   <script type="module" src="/sandbox/recall/main.js"></script>
 </body>
