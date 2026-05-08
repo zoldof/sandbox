@@ -20,6 +20,7 @@
     document.body.appendChild(tmpl.content.cloneNode(true));
   </script>
   <script type="module" src="/sandbox/recall/main.js"></script>
-  <script defer src="/sandbox/recall/select.js"></script>
+  <!-- MutationObserver入りなのでdefer無しでも成立するが動作順序明示のため -->
+  <script src="/sandbox/recall/select.js"></script>
 </body>
 </html>
