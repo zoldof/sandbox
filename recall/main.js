@@ -1,4 +1,5 @@
 import { shuffle } from "/sandbox/recall/util.js";
+import { createNavigator } from "/sandbox/recall/nav.js";
 
 // -----------------------------------------------------------------
 // ① 定数・グローバル変数
@@ -157,25 +158,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   prevBtn.addEventListener('click', prev);
   nextBtn.addEventListener('click', next);
+
+  // ナビゲータ作成
+  const nav = createNavigator({slides :shuffled, render: render});
+  // ボタンをナビと結び付け
+  nav.bindButtons(
+    document.getElementById("prevBtn"),
+    document.getElementById("nextBtn")
+  );
   
   // 初回実行
   start();
+  nav.updateButtons(); 
 });
-
-
-/*
-import { createNavigator } from "/sandbox/recall/nav.js";
-
-// ---------- ナビゲータ作成 ----------
-const nav = createNavigator({slides :shuffled, render: render});
-
-// ボタンをナビと結び付け
-nav.bindButtons(
-  document.getElementById("prevBtn"),
-  document.getElementById("nextBtn")
-);
-
-// 初回描画
-nav.updateButtons(); 
-*/
-
