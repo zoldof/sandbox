@@ -10,7 +10,6 @@ const counts = 30;
 let STORAGE_KEY = "";
 let shortcuts = [];
 let questions = [];
-let current = 0;
 
 // -----------------------------------------------------------------
 // ② ユーティリティー
@@ -77,9 +76,9 @@ function getTodayQuestions() {
 // ④ 描画関数
 // -----------------------------------------------------------------
 
-function render() {
-  document.getElementById("question").innerText = questions[current];
-  document.getElementById("progress").innerText = `${current + 1} / ${questions.length}`;
+function render(idx) {
+  document.getElementById("question").innerText = questions[idx];
+  document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
 }
 
 // -----------------------------------------------------------------
