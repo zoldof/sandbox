@@ -74,36 +74,12 @@ function getTodayQuestions() {
 }
 
 // -----------------------------------------------------------------
-// ④ 描画・実行設定
+// ④ 描画関数
 // -----------------------------------------------------------------
 
-// 描画
 function render() {
   document.getElementById("question").innerText = questions[current];
   document.getElementById("progress").innerText = `${current + 1} / ${questions.length}`;
-}
-
-// 初期化
-function start() {
-  questions = getTodayQuestions();
-  current = 0;
-  render();
-}
-
-// 戻る
-function prev() {
-  if (current > 0) {
-    current--;
-    render();
-  }
-}
-
-// 次へ
-function next() {
-  if (current < questions.length - 1) {
-    current++;
-    render();
-  }
 }
 
 // -----------------------------------------------------------------
@@ -168,6 +144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
   
   // 初回実行
-  start();
+  questions = getTodayQuestions();
+  render(0);
   nav.updateButtons(); 
 });
