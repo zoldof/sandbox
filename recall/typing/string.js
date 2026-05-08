@@ -1,4 +1,5 @@
 import { randomString } from '/sandbox/recall/util.js';
+import { createNavigator } from "/sandbox/recall/nav.js";
 
 const count = 10;
 const length = 8;
@@ -17,16 +18,26 @@ function generateProblems(cnt, len) {
 
 const problems = generateProblems(count, length);   // ページ読み込み時に一度だけ作成
 
-// ---------- 表示 ----------
-function renderProblem(problem, idx) {
-  const q = document.getElementById('question');
-  q.innerHTML = `
-    <div class="prompt">問題 ${idx + 1} / ${problems.length}</div>
-    <div class="target" style="font-size:2rem;letter-spacing:0.2em;">
-      ${problem.text.split('').join(' ')}
-    </div>
-  `;
+// ---------- 描画関数 ----------
+function renderStr(problems, idx) {
+  const el = document.getElementById("question");
+  el.textContent = problems[idx].text.split('').join(' ');
+
+  // 右上の進捗を更新
+  const prog = document.getElementById("progress");
+  prog.textContent = `${idx + 1} / ${problems.length}`;
 }
 
-// 初回描画（最初の1問だけ）
+// ---------- ナビゲータ作成 ----------
+const nav = createNavigator({slides :problems, render: renderStr});
+
+// ボタンをナビと結び付け
+nav.bindButtons(
+  document.getElementById("prevBtn"),
+  document.getElementById("nextBtn")
+);
+
+// 初回描画
 renderProblem(problems[0], 0);
+nav.updateButtons(); 
+document.getElementById('answBtn').disabled = true;
