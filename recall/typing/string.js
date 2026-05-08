@@ -38,6 +38,6 @@ nav.bindButtons(
 );
 
 // 初回描画
-renderProblem(problems[0], 0);
+renderStr(problems[0], 0);
 nav.updateButtons(); 
 document.getElementById('answBtn').disabled = true;
