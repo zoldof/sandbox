@@ -129,17 +129,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
-
-  // ナビゲータ作成
-  const nav = createNavigator({slides :shuffled, render: render});
-  // ボタンをナビと結び付け
+  
+  // データ準備 & ナビゲータ作成
+  questions = getTodayQuestions();
+  const nav = createNavigator({slides :questions, render: render});
   nav.bindButtons(
     document.getElementById("prevBtn"),
     document.getElementById("nextBtn")
   );
-  
+
   // 初回実行
-  questions = getTodayQuestions();
   render(0);
   nav.updateButtons(); 
 });
