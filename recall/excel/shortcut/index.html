@@ -8,23 +8,13 @@
 </head>
 <body>
   <div id="app" data-csv="/sandbox/recall/excel/shortcut/data.csv"></div>
-  <div id="progress"></div>
-  <div id="question"></div>
-  <select id="navSelect">
-    <option value="" selected disabled hidden></option>
-    <option value="/sandbox/recall/excel/function/">エクセル関数</option>
-    <option value="/sandbox/recall/excel/shortcut/">エクセルショートカット</option>
-    <option value="/sandbox/recall/a-process/">アクションプロセス</option>
-  </select>
-  <button id="answBtn" class="btn">◯</button>
-  <button id="shctBtn" class="btn" hidden>◇</button>
-  <button id="prevBtn" class="btn">＜</button>
-  <button id="nextBtn" class="btn">＞</button>
-  <script type="module" src="/sandbox/recall/main.js"></script>
-  <script>
-    document.getElementById('navSelect').addEventListener('change', function () {
-      if (this.value) location.href = this.value;
-    });
+  <template id="uiTemplate"></template>
+  <script type="module">
+    const src = await fetch('/sandbox/recall/ui.html').then(r => r.text());
+    const tmpl = document.getElementById('uiTemplate');
+    tmpl.innerHTML = src.trim();
+    document.body.appendChild(tmpl.content.cloneNode(true));
   </script>
+  <script type="module" src="/sandbox/recall/main.js"></script>
 </body>
 </html>
