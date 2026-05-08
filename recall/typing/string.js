@@ -1,21 +1,21 @@
 import { randomString } from 'sandbox/recall/util.js';
 
-const cnt = 10;
-const len = 8;
+const count = 10;
+const length = 8;
 
 // ---------- 10問生成 ----------
-function generateProblems(count, length) {
+function generateProblems(cnt, len) {
   const problems = [];
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < cnt; i++) {
     problems.push({
       id: i,
-      text: randomString(length)   // 正解文字列
+      text: randomString(len)   // 正解文字列
     });
   }
   return problems;
 }
 
-const problems = generateProblems(cnt, len);   // ページ読み込み時に一度だけ作成
+const problems = generateProblems(count, length);   // ページ読み込み時に一度だけ作成
 
 // ---------- 表示 ----------
 function renderProblem(problem, idx) {
