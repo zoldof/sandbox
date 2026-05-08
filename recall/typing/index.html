@@ -2,16 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>タイピング練習（表示だけ）</title>
-  <style>
-    body { font-family: sans-serif; padding: 2rem; }
-    .prompt { margin-bottom: 0.5rem; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ランダム文字列のタイピング</title>
+  <link rel="stylesheet" href="/sandbox/recall/style.css">
 </head>
 <body>
-  <h1>タイピング問題（10問）</h1>
-  <div id="question"></div>
-
+  <template id="uiTemplate"></template>
+  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
   <script type="module" src="/sandbox/recall/typing/string.js"></script>
+  <script defer src="/sandbox/recall/select.js"></script>
 </body>
 </html>
