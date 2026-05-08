@@ -18,7 +18,7 @@ export function createNavigator({slides, initial = 0, render}) {
     if (arity === 0) {
       render();
     } else if (arity === 1) {
-      render(item);
+      render(idx);
     } else {
       render(item, idx);
     }
