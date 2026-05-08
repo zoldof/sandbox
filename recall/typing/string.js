@@ -1,4 +1,4 @@
-import { randomString } from 'sandbox/recall/util.js';
+import { randomString } from '/sandbox/recall/util.js';
 
 const count = 10;
 const length = 8;
