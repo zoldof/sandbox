@@ -14,7 +14,6 @@
     tmpl.innerHTML = src.trim();
     document.body.appendChild(tmpl.content.cloneNode(true));
   </script>
-  <script src="/sandbox/recall/select.js"></script>
   <script type="module">
     import { shuffle } from "/sandbox/recall/util.js";
     import { createNavigator } from "/sandbox/recall/nav.js";
@@ -62,5 +61,6 @@
     nav.updateButtons(); 
     document.getElementById('answBtn').disabled = true;
   </script>
+  <script defer src="/sandbox/recall/select.js"></script>
 </body>
 </html>
