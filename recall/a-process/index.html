@@ -15,7 +15,7 @@
     <option value="/sandbox/recall/excel/shortcut/">エクセルショートカット</option>
     <option value="/sandbox/recall/a-process/">アクションプロセス</option>
   </select>
-  <button id="answBtn" class="btn" disabled>◯</button>
+  <button id="answBtn" class="btn" >◯</button>
   <button id="shctBtn" class="btn" hidden>◇</button>
   <button id="prevBtn" class="btn">＜</button>
   <button id="nextBtn" class="btn">＞</button>
@@ -69,6 +69,7 @@
     // 初回描画
     renderImg(shuffledSlides[0], 0);
     nav.updateButtons(); 
+    document.getElementById('answBtn').disabled = true;
   </script>
 </body>
 </html>
