@@ -117,8 +117,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 変数にボタン要素を格納
   const answBtn = document.getElementById('answBtn');
   const shctBtn = document.getElementById('shctBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
 
   // イベントハンドラ設定
   answBtn.addEventListener('click', () => {
@@ -131,8 +129,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
-  prevBtn.addEventListener('click', prev);
-  nextBtn.addEventListener('click', next);
 
   // ナビゲータ作成
   const nav = createNavigator({slides :shuffled, render: render});
