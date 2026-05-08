@@ -8,7 +8,7 @@ import { createNavigator } from "/sandbox/recall/nav.js";
 const general = "shortcut"; // 現状ではデフォルトショートカット機能は未使用
 const counts = 30;
 let STORAGE_KEY = "";
-let shortcuts = [];
+let rawData = [];
 let questions = [];
 
 // -----------------------------------------------------------------
@@ -47,7 +47,7 @@ function loadState() {
   }
 
   // 初回もしくは残存問題数が不足した場合
-  const shuffled = shuffle([...shortcuts]);
+  const shuffled = shuffle([...rawData]);
 
   state = {
     order: shuffled,
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const appEl   = document.getElementById("app");
   const csvPath = appEl.dataset.csv.trim();
   const allData = await loadCSV(csvPath);
-  shortcuts = allData.map(d => d.question);
+  rawData = allData.map(d => d.question);
 
   // 文字列のcsvPathをorigin含めた絶対URLに変換して抽出分割
   const origin = window.location.origin; 
