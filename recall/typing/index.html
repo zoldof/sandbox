@@ -7,17 +7,8 @@
   <link rel="stylesheet" href="/sandbox/recall/style.css">
 </head>
 <body>
-  <div id="progress"></div>
-  <div id="question"></div>
-  <select id="navSelect">
-    <option value="" selected disabled hidden></option>
-    <option value="/sandbox/recall/excel/function/">エクセル関数</option>
-    <option value="/sandbox/recall/excel/shortcut/">エクセルショートカット</option>
-    <option value="/sandbox/recall/a-process/">アクションプロセス</option>
-  </select>
-  <button id="answBtn" class="btn">◯</button>
-  <button id="prevBtn" class="btn">＜</button>
-  <button id="nextBtn" class="btn">＞</button>
+  <template id="uiTemplate"></template>
+  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
   <script type="module" src="/sandbox/recall/typing/string.js"></script>
 </body>
 </html>
