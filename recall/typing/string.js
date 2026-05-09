@@ -28,4 +28,4 @@ nav.bindButtons(
 renderStr(0);
 nav.updateButtons(); 
 document.getElementById("answBtn").hidden = true;
-document.getElementById("naviSelect").hidden = true;
+document.getElementById("navSelect").hidden = true;
