@@ -1,4 +1,4 @@
-import { generateProblems } from '/sandbox/recall/util.js';
+import { generateProblems } from "/sandbox/recall/util.js";
 import { createNavigator } from "/sandbox/recall/nav.js";
 
 const length = 8;
