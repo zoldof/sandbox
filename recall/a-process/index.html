@@ -8,8 +8,10 @@
 </head>
 <body>
   <template id="uiTemplate"></template>
-  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
-  <script type="module" src="/sandbox/recall/a-process/slide.js"></script>
+  <script type="module">
+    await import("/sandbox/recall/call-tmpl_ui.js");
+    await import("/sandbox/recall/a-process/slide.js");
+  </script>
   <script defer src="/sandbox/recall/select.js"></script>
 </body>
 </html>
