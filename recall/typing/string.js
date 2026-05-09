@@ -3,7 +3,7 @@ import { createNavigator } from "/sandbox/recall/nav.js";
 
 const length = 8;
 const count = 10;
-const problems = await generateProblems(count, length);   // ページ読み込み時に一度だけ作成
+const problems = generateProblems(count, length);   // ページ読み込み時に一度だけ作成
 
 // ---------- 描画関数 ----------
 function renderStr(idx) {
