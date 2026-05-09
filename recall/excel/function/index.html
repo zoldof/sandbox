@@ -9,24 +9,17 @@
   <link rel="stylesheet" href="/sandbox/recall/style.css">
 </head>
 <body>
-  <!-- デバッグ用の要素 -->
-  <div id="debug"></div>
   <!-- CSV の場所を data-csv に埋め込む -->
   <div id="app" data-csv="/sandbox/recall/excel/function/data.csv"></div>
   <!-- ここにテンプレートが注入される -->
   <template id="uiTemplate"></template>
-  <script>
-    // デバッグ用の関数
-    function debug(msg) { document.getElementById("debug").innerHTML += `<p>${msg}</p>`; }
-  </script>
   <script type="module">
     // テンプレートを呼び出すのためのスクリプトを読み込む
-    await import("/sandbox/recall/call-tmpl_ui.js");
+    <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
     // セレクトボックスに内部リンクを付与
-    await import("/sandbox/recall/select.js");
+    <script type="module" src="/sandbox/recall/main.js"></script>
     // 主要動作を含むスクリプトを読み込む
-    await import("/sandbox/recall/main.js");
+    <script defer src="/sandbox/recall/select.js"></script>
   </script>
-  <!-- <script type="module" src="/sandbox/recall/main.js"></script> -->
 </body>
 </html>
