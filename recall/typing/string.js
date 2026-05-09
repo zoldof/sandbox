@@ -27,5 +27,5 @@ nav.bindButtons(
 // 初回描画
 renderStr(0);
 nav.updateButtons(); 
-document.getElementById("answBtn").dsabled = true;
-document.getElementById("navSelect").dsabled = true;
+document.getElementById("answBtn").disabled = true;
+document.getElementById("navSelect").disabled = true;
