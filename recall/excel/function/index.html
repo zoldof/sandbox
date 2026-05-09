@@ -15,6 +15,10 @@
   <div id="app" data-csv="/sandbox/recall/excel/function/data.csv"></div>
   <!-- ここにテンプレートが注入される -->
   <template id="uiTemplate"></template>
+  <script>
+    // デバッグ用の関数
+    function debug(msg) { document.getElementById("debug").innerHTML += `<p>${msg}</p>`; }
+  </script>
   <script type="module">
     // テンプレートを呼び出すのためのスクリプトを読み込む
     await import("/sandbox/recall/call-tmpl_ui.js");
