@@ -87,7 +87,8 @@ function render(idx) {
 
 // 初期データ設定 
 // DOM構築が完成したらすぐ実行
-document.addEventListener("DOMContentLoaded", async () => {
+//document.addEventListener("DOMContentLoaded", async () => {
+function init() {
   // htmlで指定したdataset.csvからパスを取得し1列の配列に整形
   const appEl   = document.getElementById("app");
   const csvPath = appEl.dataset.csv.trim();
@@ -141,4 +142,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 初回実行
   render(0);
   nav.updateButtons(); 
-});
+//});
+init();
