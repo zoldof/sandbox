@@ -8,7 +8,9 @@
 </head>
 <body>
   <template id="uiTemplate"></template>
-  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
-  <script type="module" src="/sandbox/recall/typing/string.js"></script>
+  <script type="module">
+    await import('/sandbox/recall/call-tmpl_ui.js');
+    await import('/sandbox/recall/typing/string.js');
+  </script>
 </body>
 </html>
