@@ -27,3 +27,4 @@ nav.bindButtons(
 // 初回描画
 renderStr(0);
 nav.updateButtons(); 
+document.getElementById("nextBtn").hidden = true;
