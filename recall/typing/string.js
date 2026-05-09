@@ -27,4 +27,5 @@ nav.bindButtons(
 // 初回描画
 renderStr(0);
 nav.updateButtons(); 
-document.getElementById('answBtn').disabled = true;
+document.getElementById('answBtn').hidden = true;
+document.getElementById('navSelect').hidden = true;
