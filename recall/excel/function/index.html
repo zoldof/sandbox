@@ -17,9 +17,9 @@
     // テンプレートを呼び出すのためのスクリプトを読み込む
     await import("/sandbox/recall/call-tmpl_ui.js");
     // 主要動作を含むスクリプトを読み込む
-    import("/sandbox/recall/main.js");
+    await import("/sandbox/recall/main.js");
     // セレクトボックスに内部リンクを付与
-    await import("/sandbox/recall/select.js");
+    // await import("/sandbox/recall/select.js");
   </script>
 </body>
 </html>
