@@ -42,4 +42,5 @@ nav.bindButtons(
 // 初回描画
 renderImg(shuffledSlides[0], 0);
 nav.updateButtons(); 
-document.getElementById('answBtn').disabled = true;
+//document.getElementById('answBtn').disabled = true;
+document.getElementById('answBtn').hidden = true;
