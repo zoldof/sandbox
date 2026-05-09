@@ -1,6 +1,7 @@
-    import { shuffle } from "/sandbox/recall/util.js";
-    import { createNavigator } from "/sandbox/recall/nav.js";
+import { shuffle } from "/sandbox/recall/util.js";
+import { createNavigator } from "/sandbox/recall/nav.js";
 
+document.addEventListener('DOMContentLoaded', async () => {
     // ---- 画像ファイルを取得 & 件数取得 ----
     async function loadSlides(max = 30) {
       const slides = [];
@@ -43,3 +44,4 @@
     renderImg(shuffledSlides[0], 0);
     nav.updateButtons(); 
     document.getElementById('answBtn').disabled = true;
+});
