@@ -13,10 +13,13 @@
   <div id="app" data-csv="/sandbox/recall/excel/function/data.csv"></div>
   <!-- ここにテンプレートが注入される -->
   <template id="uiTemplate"></template>
-  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
-  <!-- 主要動作を含むスクリプトを読み込む -->
-  <script type="module" src="/sandbox/recall/main.js"></script>
-  <!-- MutationObserver入りなのでdefer無しでも成立するが動作順序明示のため -->
-  <script defer src="/sandbox/recall/select.js"></script>
+  <script type="module">
+    // テンプレートを呼び出すのためのスクリプトを読み込む
+    await import("/sandbox/recall/call-tmpl_ui.js");
+    // 主要動作を含むスクリプトを読み込む
+    await import("/sandbox/recall/main.js");
+    // セレクトボックスに内部リンクを付与
+    await import("/sandbox/recall/select.js");
+  </script>
 </body>
 </html>
