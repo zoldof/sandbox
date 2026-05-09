@@ -19,7 +19,7 @@ function generateProblems(cnt, len) {
 const problems = generateProblems(count, length);   // ページ読み込み時に一度だけ作成
 
 // ---------- 描画関数 ----------
-function renderStr(problems, idx) {
+function renderStr(idx) {
   const el = document.getElementById("question");
   el.textContent = problems[idx].text.split('').join(' ');
 
@@ -38,6 +38,6 @@ nav.bindButtons(
 );
 
 // 初回描画
-renderStr(problems[0], 0);
+renderStr(0);
 nav.updateButtons(); 
 document.getElementById('answBtn').disabled = true;
