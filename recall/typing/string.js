@@ -1,21 +1,8 @@
-import { randomString } from '/sandbox/recall/util.js';
+import { generateProblems } from '/sandbox/recall/util.js';
 import { createNavigator } from "/sandbox/recall/nav.js";
 
-const count = 10;
 const length = 8;
-
-// ---------- 10問生成 ----------
-function generateProblems(cnt, len) {
-  const problems = [];
-  for (let i = 0; i < cnt; i++) {
-    problems.push({
-      id: i,
-      text: randomString(len)   // 正解文字列
-    });
-  }
-  return problems;
-}
-
+const count = 10;
 const problems = generateProblems(count, length);   // ページ読み込み時に一度だけ作成
 
 // ---------- 描画関数 ----------
