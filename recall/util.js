@@ -15,7 +15,7 @@ function randomString(len) {
   return result;
 }
 
-export function generateProblems(cnt, len) {
+export async function generateProblems(cnt, len) {
   const problems = [];
   for (let i = 0; i < cnt; i++) {
     problems.push({
