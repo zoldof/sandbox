@@ -94,43 +94,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   const allData = await loadCSV(csvPath);
   rawData = allData.map(d => d.question);
 
-  debug("2");
-
   // 文字列のcsvPathをorigin含めた絶対URLに変換して抽出分割
   const origin = window.location.origin; 
   const csvUrl = new URL(csvPath, origin);
   const parts = csvUrl.pathname.split('/').filter(Boolean);
 
-  debug("3");
-
   // STORAGE_KEYの振り分け
   STORAGE_KEY = parts[3];
-
-  debug("4");
   
   // 回答確認場所へのリンクパス作成部品
   const user = csvUrl.hostname.split('.')[0];
   const repo = parts[0];
   const regex = new RegExp(`^/${repo}/`);
 
-  debug("5");
-
   // エクセルショートカットの暗記用ページへのリンクパス作成部品
   const segments = parts.splice(0, 3);
-
-  debug("6");
 
   // 共用変数を定義
   let newPath = "";
   let externalUrl = "";
 
-  debug("7");
-
   // 変数にボタン要素を格納
   const answBtn = document.getElementById('answBtn');
   const shctBtn = document.getElementById('shctBtn');
-
-  debug("8");
 
   // イベントハンドラ設定
   answBtn.addEventListener('click', () => {
@@ -143,8 +129,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
-
-  debug("9");
   
   // データ準備 & ナビゲータ作成
   questions = getTodayQuestions();
@@ -154,13 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("nextBtn")
   );
 
-  debug("10");
-
   // 初回実行
   render(0);
   nav.updateButtons(); 
-
-  debug("11");
 });
-  
-debug("12");
