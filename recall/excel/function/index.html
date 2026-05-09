@@ -13,13 +13,11 @@
   <div id="app" data-csv="/sandbox/recall/excel/function/data.csv"></div>
   <!-- ここにテンプレートが注入される -->
   <template id="uiTemplate"></template>
-  <script type="module">
-    // テンプレートを呼び出すのためのスクリプトを読み込む
-    <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
-    // セレクトボックスに内部リンクを付与
-    <script type="module" src="/sandbox/recall/main.js"></script>
-    // 主要動作を含むスクリプトを読み込む
-    <script defer src="/sandbox/recall/select.js"></script>
-  </script>
+  <!-- テンプレートを呼び出すのためのスクリプトを読み込む -->
+  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
+  <!-- 主要動作を含むスクリプトを読み込む -->
+  <script defer src="/sandbox/recall/select.js"></script>
+  <!-- セレクトボックスに内部リンクを付与 -->
+  <script type="module" src="/sandbox/recall/main.js"></script>
 </body>
 </html>
