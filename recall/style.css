@@ -30,6 +30,7 @@ body {
   width: 45%;
   font-size: 48px;
   text-align: right;
+  white-space: nowrap;
 }
 
 /* 右上：進捗 */
