@@ -2,6 +2,7 @@ import { generateProblems } from "/sandbox/recall/util.js";
 
 const length = 8;
 const count = 10;
+let current = 0;
 const problems = generateProblems(count, length);   // ページ読み込み時に一度だけ作成
 
 // ---------- 描画関数 ----------
