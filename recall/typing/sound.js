@@ -38,7 +38,7 @@ export function play(name) {
   
   // options.offset があればそれを使い、無ければデフォルトを使用
   const offset = options.offset ?? DEFAULT_OFFSET;
-  src.start(0, offset);
+  src.start(0, 0.1);
 }
 
 // -------------------------------------------------
