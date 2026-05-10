@@ -1,5 +1,4 @@
 import { generateProblems } from "/sandbox/recall/util.js";
-import { createNavigator } from "/sandbox/recall/nav.js";
 
 const length = 8;
 const count = 10;
@@ -16,13 +15,12 @@ function renderStr(idx) {
 }
 
 // ---------- ナビゲータ作成 ----------
-const nav = createNavigator({slides :problems, render: renderStr});
-
-// ボタンをナビと結び付け
-nav.bindButtons(
-  document.getElementById("prevBtn"),
-  document.getElementById("nextBtn")
-);
+function next() {
+  if (current < data.length - 1) {
+    current++;
+    renderStr(current);
+  }
+}
 
 // Enterで次の問題を表示する
 function setupEnterKey() {
@@ -30,17 +28,11 @@ function setupEnterKey() {
     // フォーカスが入力欄などにある場合は除外できるが、現在は入力欄が無いので、そのまま Enter のみ処理
     if (e.key === 'Enter') {
       e.preventDefault();
-      nav.next();
+      next();
     }
   });
 }
 
 // 初回描画
 renderStr(0);
-nav.updateButtons(); 
-document.getElementById("answBtn").hidden = true;
-document.getElementById("navSelect").hidden = true;
-document.getElementById("prevBtn").hidden = true;
-document.getElementById("nextBtn").hidden = true;
-
 setupEnterKey();
