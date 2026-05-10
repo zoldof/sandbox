@@ -1,5 +1,4 @@
 import { generateProblems } from "/sandbox/recall/util.js";
-import { play, soundsReady } from '/sandbox/recall/typing/sound.js';
 
 const length = 8;
 const count  = 10;
@@ -9,7 +8,9 @@ let current = 0;
 let remaining = [];
 
 // 音声オブジェクトの作成
-await soundsReady;
+const soundCorrect = new Audio('/sandbox/recall/typing/sounds/type.mp3');
+const soundWrong   = new Audio('/sandbox/recall/typing/sounds/wrong.mp3');
+const soundNext    = new Audio('/sandbox/recall/typing/sounds/next.mp3');
 
 // ---------- 描画 ----------
 function render() {
@@ -41,7 +42,8 @@ function setupKeyHandler() {
       e.preventDefault();
       if (remaining.length === 0) {
         next();
-        play('next'); 
+        soundNext.currentTime = 0;  // 連続入力でも最初から再生
+        soundNext.play();
       }
       return;
     }
@@ -55,10 +57,12 @@ function setupKeyHandler() {
     if (typed === expected) {
       remaining.shift();               // 正解 → 先頭を削除
       render();
-      play('correct');
+      soundCorrect.currentTime = 0;
+      soundCorrect.play();
     } else {
       setCurrentProblem(current);      // 同じ問題にリセット
-      play('wrong');
+      soundCorrect.currentTime = 0;
+      soundWrong.play();
     }
   });
 }
