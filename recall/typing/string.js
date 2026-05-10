@@ -17,7 +17,7 @@ function renderStr(idx) {
 
 // ---------- ナビゲータ作成 ----------
 function next() {
-  if (current < data.length - 1) {
+  if (current < problems.length - 1) {
     current++;
     renderStr(current);
   }
