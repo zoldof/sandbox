@@ -9,8 +9,8 @@ let remaining = [];
 
 // 音声オブジェクトの作成
 const soundCorrect = new Audio('/sandbox/recall/typing/sounds/type.mp3');
-const soundWrong   = new Audio('/sandbox/recall/typing//sounds/wrong.mp3');
-const soundNext    = new Audio('/sandbox/recall/typing//sounds/next.mp3');
+const soundWrong   = new Audio('/sandbox/recall/typing/sounds/wrong.mp3');
+const soundNext    = new Audio('/sandbox/recall/typing/sounds/next.mp3');
 
 // ---------- 描画 ----------
 function render() {
