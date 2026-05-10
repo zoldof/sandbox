@@ -44,7 +44,7 @@ function setupKeyHandler() {
     // 無効キーは除外
     if (e.key.length !== 1) return;
 
-    const typed = e.key;               // 必要に応じて .toUpperCase() などで正規化
+    const typed = e.key.toUpperCase();
     const expected = remaining[0];
 
     if (typed === expected) {
