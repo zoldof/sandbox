@@ -27,8 +27,6 @@ function next() {
   if (current < problems.length - 1) {
     current++;
     setCurrentProblem(current);
-  } else {
-    //alert('すべての問題が終了しました！');
   }
 }
 
@@ -51,7 +49,6 @@ function setupKeyHandler() {
       remaining.shift();               // 正解 → 先頭を削除
       render();
     } else {
-      //alert('違う文字です。最初からやり直してください。');
       setCurrentProblem(current);      // 同じ問題にリセット
     }
   });
