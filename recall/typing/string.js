@@ -7,6 +7,11 @@ const problems = generateProblems(count, length);
 let current = 0;
 let remaining = [];
 
+// 音声オブジェクトの作成
+const soundCorrect = new Audio('/sounds/type.mp3');
+const soundWrong   = new Audio('/sounds/wrong.mp3');
+const soundNext    = new Audio('/sounds/next.mp3');
+
 // ---------- 描画 ----------
 function render() {
   const el = document.getElementById("typing");
@@ -35,7 +40,11 @@ function setupKeyHandler() {
   document.body.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (remaining.length === 0) next();
+      if (remaining.length === 0) {
+        next();
+        soundNext.currentTime = 0;
+        soundNext.play();
+      }
       return;
     }
 
@@ -44,12 +53,15 @@ function setupKeyHandler() {
 
     const typed = e.key.toUpperCase();
     const expected = remaining[0];
-
+    soundCorrect.currentTime = 0;    // 連続入力でも最初から再生
+    
     if (typed === expected) {
       remaining.shift();               // 正解 → 先頭を削除
       render();
+      soundCorrect.play();
     } else {
       setCurrentProblem(current);      // 同じ問題にリセット
+      soundWrong.play();
     }
   });
 }
