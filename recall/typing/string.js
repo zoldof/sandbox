@@ -40,5 +40,7 @@ renderStr(0);
 nav.updateButtons(); 
 document.getElementById("answBtn").hidden = true;
 document.getElementById("navSelect").hidden = true;
+document.getElementById("prevBtn").hidden = true;
+document.getElementById("nextBtn").hidden = true;
 
 setupEnterKey();
