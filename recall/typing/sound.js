@@ -26,6 +26,7 @@ loadAll().catch(e => console.error('sound load error:', e));
 // 4️⃣ 再生関数（即時再生）
 //    - AudioContext がサスペンド状態なら resume() で起動
 //    - 存在しないキーが来たら何もしない（安全策）
+const DEFAULT_OFFSET = 0.3;   // 0.3 秒
 export function play(name) {
   if (!buffers[name]) return;          // バッファが無いときは無視
 
@@ -34,7 +35,10 @@ export function play(name) {
   const src = ctx.createBufferSource();
   src.buffer = buffers[name];
   src.connect(ctx.destination);
-  src.start(0);
+  
+  // options.offset があればそれを使い、無ければデフォルトを使用
+  const offset = options.offset ?? DEFAULT_OFFSET;
+  src.start(0, offset);
 }
 
 // -------------------------------------------------
