@@ -9,7 +9,7 @@ body {
   font-family: sans-serif;
 }
 
-/* 問題文（中央） */
+/* 想起問題 */
 #question {
   width: 80%;
   font-size: 24px;
@@ -17,7 +17,7 @@ body {
   word-break: break-word;
 }
 
-/* 画像の出題 */
+/* 画像問題 */
 .slide-img {
   max-width: 100%;
   max-height: 70vh;
@@ -25,8 +25,9 @@ body {
   border-radius: 6px;
 }
 
+/* タイピング問題 */
 #typing {
-  width: 40%;
+  width: 45%;
   font-size: 48px;
   text-align: right;
 }
