@@ -3,9 +3,9 @@ const ctx = new (window.AudioContext || window.webkitAudioContext)();
 
 // 2️⃣ ファイルパスとバッファ格納用オブジェクト
 const files = {
-  correct: '/sounds/type.mp3',
-  wrong:   '/sounds/wrong.mp3',
-  next:    '/sounds/next.mp3'
+  correct: '/sandbox/recall/typing/sounds/type.mp3',
+  wrong:   '/sandbox/recall/typing/sounds/wrong.mp3',
+  next:    '/sandbox/recall/typing/sounds/next.mp3'
 };
 const buffers = {};   // {correct: AudioBuffer, ...}
 
