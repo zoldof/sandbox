@@ -11,9 +11,9 @@ body {
 
 /* 問題文（中央） */
 #question {
-  width: 80%;
+  width: 20%;
   font-size: 24px;
-  text-align: center;
+  text-align: right;
   word-break: break-word;
 }
 
