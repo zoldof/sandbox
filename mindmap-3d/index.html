@@ -1,15 +1,185 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>3D Mind Map Demo</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <canvas id="canvas"></canvas>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-  <script src="script.js"></script>
+<title>3D Mind Map</title>
+
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0f172a;
+    font-family: sans-serif;
+  }
+
+  #graph {
+    width: 100%;
+    height: 100%;
+  }
+
+  .label {
+    color: white;
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    text-shadow:
+      0 0 4px rgba(0,0,0,0.8),
+      0 0 8px rgba(0,0,0,0.8);
+  }
+
+  .info {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+
+    background: rgba(0,0,0,0.5);
+    color: white;
+
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    line-height: 1.6;
+    font-size: 14px;
+
+    backdrop-filter: blur(8px);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="info">
+  ドラッグ：回転<br>
+  ホイール：ズーム<br>
+  ノードクリック：注視
+</div>
+
+<div id="graph"></div>
+
+<!-- Three.js -->
+<script src="https://unpkg.com/three"></script>
+
+<!-- SpriteText -->
+<script src="https://unpkg.com/three-spritetext"></script>
+
+<!-- 3D Force Graph -->
+<script src="https://unpkg.com/3d-force-graph"></script>
+
+<script>
+
+const data = {
+
+  nodes: [
+
+    { id: "思考法", group: 1 },
+
+    { id: "演繹", group: 2 },
+    { id: "帰納", group: 2 },
+    { id: "アブダクション", group: 2 },
+
+    { id: "因果推論", group: 3 },
+    { id: "システム思考", group: 3 },
+    { id: "ロジックツリー", group: 3 },
+
+    { id: "抽象化", group: 4 },
+    { id: "構造化", group: 4 },
+    { id: "仮説検証", group: 4 },
+
+    { id: "数学", group: 5 },
+    { id: "アルゴリズム", group: 5 },
+    { id: "情報設計", group: 5 }
+
+  ],
+
+  links: [
+
+    { source: "思考法", target: "演繹" },
+    { source: "思考法", target: "帰納" },
+    { source: "思考法", target: "アブダクション" },
+
+    { source: "演繹", target: "ロジックツリー" },
+    { source: "帰納", target: "仮説検証" },
+    { source: "アブダクション", target: "因果推論" },
+
+    { source: "因果推論", target: "システム思考" },
+
+    { source: "抽象化", target: "構造化" },
+
+    { source: "数学", target: "アルゴリズム" },
+    { source: "アルゴリズム", target: "情報設計" },
+
+    { source: "構造化", target: "情報設計" },
+    { source: "抽象化", target: "数学" }
+
+  ]
+};
+
+const colors = {
+  1: "#f43f5e",
+  2: "#38bdf8",
+  3: "#22c55e",
+  4: "#facc15",
+  5: "#a78bfa"
+};
+
+const Graph = ForceGraph3D()
+(document.getElementById("graph"))
+
+.graphData(data)
+
+.backgroundColor("#0f172a")
+
+.nodeThreeObject(node => {
+
+  const sprite = new SpriteText(node.id);
+
+  sprite.color = "white";
+  sprite.textHeight = 8;
+
+  return sprite;
+})
+
+.nodeThreeObjectExtend(true)
+
+.nodeColor(node => colors[node.group])
+
+.linkOpacity(0.35)
+
+.linkWidth(1.2)
+
+.linkColor(() => "#94a3b8")
+
+.onNodeClick(node => {
+
+  const distance = 120;
+
+  const distRatio =
+    1 + distance /
+    Math.hypot(node.x, node.y, node.z);
+
+  Graph.cameraPosition(
+    {
+      x: node.x * distRatio,
+      y: node.y * distRatio,
+      z: node.z * distRatio
+    },
+    node,
+    1200
+  );
+});
+
+Graph.d3Force("charge").strength(-250);
+
+Graph.d3Force("link").distance(80);
+
+Graph.d3Force("center").strength(0.3);
+
+</script>
+
 </body>
 </html>
