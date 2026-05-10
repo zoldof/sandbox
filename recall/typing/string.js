@@ -24,8 +24,21 @@ nav.bindButtons(
   document.getElementById("nextBtn")
 );
 
+// Enterで次の問題を表示する
+function setupEnterKey() {
+  document.body.addEventListener('keydown', (e) => {
+    // フォーカスが入力欄などにある場合は除外できるが、現在は入力欄が無いので、そのまま Enter のみ処理
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      nav.next();
+    }
+  });
+}
+
 // 初回描画
 renderStr(0);
 nav.updateButtons(); 
 document.getElementById("answBtn").hidden = true;
 document.getElementById("navSelect").hidden = true;
+
+setupEnterKey();
