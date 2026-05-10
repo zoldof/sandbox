@@ -9,8 +9,10 @@
 <body>
   <div id="app" data-csv="/sandbox/recall/excel/shortcut/data.csv"></div>
   <template id="uiTemplate"></template>
-  <script type="module" src="/sandbox/recall/call-tmpl_ui.js"></script>
-  <script type="module" src="/sandbox/recall/main.js"></script>
-  <script defer src="/sandbox/recall/select.js"></script>
+  <script type="module">
+    await import("/sandbox/recall/call-tmpl_ui.js");
+    await import("/sandbox/recall/main.js");
+    await import("/sandbox/recall/select.js");
+  </script>
 </body>
 </html>
