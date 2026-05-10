@@ -1,74 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>3D Mind Map</title>
+<title>3D MindMap</title>
 
 <style>
-  html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #0f172a;
-    font-family: sans-serif;
-  }
 
-  #graph {
-    width: 100%;
-    height: 100%;
-  }
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0f172a;
+}
 
-  .label {
-    color: white;
-    font-size: 14px;
-    white-space: nowrap;
-    pointer-events: none;
-    text-shadow:
-      0 0 4px rgba(0,0,0,0.8),
-      0 0 8px rgba(0,0,0,0.8);
-  }
+#3d-graph {
+  width: 100vw;
+  height: 100vh;
+}
 
-  .info {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 10;
+.info {
+  position: fixed;
+  top: 10px;
+  left: 10px;
 
-    background: rgba(0,0,0,0.5);
-    color: white;
+  color: white;
+  background: rgba(0,0,0,0.4);
 
-    padding: 10px 14px;
-    border-radius: 12px;
+  padding: 10px;
+  border-radius: 10px;
 
-    line-height: 1.6;
-    font-size: 14px;
+  z-index: 10;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
 
-    backdrop-filter: blur(8px);
-  }
 </style>
 </head>
 
 <body>
 
 <div class="info">
-  ドラッグ：回転<br>
-  ホイール：ズーム<br>
-  ノードクリック：注視
+ドラッグ：回転<br>
+ホイール：ズーム<br>
+ノードクリック：注視
 </div>
 
-<div id="graph"></div>
+<div id="3d-graph"></div>
 
-<!-- Three.js -->
-<script src="https://unpkg.com/three"></script>
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
 
-<!-- SpriteText -->
-<script src="https://unpkg.com/three-spritetext"></script>
-
-<!-- 3D Force Graph -->
-<script src="https://unpkg.com/3d-force-graph"></script>
+<script src="https://unpkg.com/3d-force-graph@1.76.0/dist/3d-force-graph.min.js"></script>
 
 <script>
 
@@ -76,23 +60,17 @@ const data = {
 
   nodes: [
 
-    { id: "思考法", group: 1 },
+    { id: "思考法", color: "#ff4d6d" },
 
-    { id: "演繹", group: 2 },
-    { id: "帰納", group: 2 },
-    { id: "アブダクション", group: 2 },
+    { id: "演繹", color: "#4dabf7" },
+    { id: "帰納", color: "#4dabf7" },
+    { id: "アブダクション", color: "#4dabf7" },
 
-    { id: "因果推論", group: 3 },
-    { id: "システム思考", group: 3 },
-    { id: "ロジックツリー", group: 3 },
+    { id: "数学", color: "#ffd43b" },
+    { id: "アルゴリズム", color: "#ffd43b" },
 
-    { id: "抽象化", group: 4 },
-    { id: "構造化", group: 4 },
-    { id: "仮説検証", group: 4 },
-
-    { id: "数学", group: 5 },
-    { id: "アルゴリズム", group: 5 },
-    { id: "情報設計", group: 5 }
+    { id: "因果推論", color: "#69db7c" },
+    { id: "システム思考", color: "#69db7c" }
 
   ],
 
@@ -102,57 +80,31 @@ const data = {
     { source: "思考法", target: "帰納" },
     { source: "思考法", target: "アブダクション" },
 
-    { source: "演繹", target: "ロジックツリー" },
-    { source: "帰納", target: "仮説検証" },
-    { source: "アブダクション", target: "因果推論" },
-
-    { source: "因果推論", target: "システム思考" },
-
-    { source: "抽象化", target: "構造化" },
-
+    { source: "演繹", target: "数学" },
     { source: "数学", target: "アルゴリズム" },
-    { source: "アルゴリズム", target: "情報設計" },
 
-    { source: "構造化", target: "情報設計" },
-    { source: "抽象化", target: "数学" }
+    { source: "帰納", target: "因果推論" },
+    { source: "因果推論", target: "システム思考" }
 
   ]
 };
 
-const colors = {
-  1: "#f43f5e",
-  2: "#38bdf8",
-  3: "#22c55e",
-  4: "#facc15",
-  5: "#a78bfa"
-};
-
 const Graph = ForceGraph3D()
-(document.getElementById("graph"))
+(document.getElementById('3d-graph'))
 
 .graphData(data)
 
-.backgroundColor("#0f172a")
+.nodeLabel('id')
 
-.nodeThreeObject(node => {
+.nodeAutoColorBy('color')
 
-  const sprite = new SpriteText(node.id);
+.nodeColor(node => node.color)
 
-  sprite.color = "white";
-  sprite.textHeight = 8;
+.nodeRelSize(6)
 
-  return sprite;
-})
+.linkOpacity(0.4)
 
-.nodeThreeObjectExtend(true)
-
-.nodeColor(node => colors[node.group])
-
-.linkOpacity(0.35)
-
-.linkWidth(1.2)
-
-.linkColor(() => "#94a3b8")
+.backgroundColor('#0f172a')
 
 .onNodeClick(node => {
 
@@ -169,15 +121,10 @@ const Graph = ForceGraph3D()
       z: node.z * distRatio
     },
     node,
-    1200
+    1000
   );
+
 });
-
-Graph.d3Force("charge").strength(-250);
-
-Graph.d3Force("link").distance(80);
-
-Graph.d3Force("center").strength(0.3);
 
 </script>
 
