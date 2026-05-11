@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>3D MindMap</title>
+<title>MindMap-3D</title>
 
 <style>
 
@@ -39,40 +39,27 @@ html, body {
 
 </style>
 </head>
-
 <body>
-
-<div class="info">
-ドラッグ：回転<br>
-ホイール：ズーム<br>
-ノードクリック：注視
-</div>
-
-<div id="3d-graph"></div>
-
-<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
-
-<script src="https://unpkg.com/3d-force-graph@1.76.0/dist/3d-force-graph.min.js"></script>
-
-<script>
-
-const data = {
-
-  nodes: [
-
-    { id: "思考法", color: "#ff4d6d" },
-
-    { id: "演繹", color: "#4dabf7" },
-    { id: "帰納", color: "#4dabf7" },
-    { id: "アブダクション", color: "#4dabf7" },
-
-    { id: "数学", color: "#ffd43b" },
-    { id: "アルゴリズム", color: "#ffd43b" },
-
-    { id: "因果推論", color: "#69db7c" },
-    { id: "システム思考", color: "#69db7c" }
-
-  ],
+  <div class="info">
+    ドラッグ：回転<br>
+    ホイール：ズーム<br>
+    ノードクリック：注視
+  </div>
+  <div id="3d-graph"></div>
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script src="https://unpkg.com/3d-force-graph@1.76.0/dist/3d-force-graph.min.js"></script>
+  <script>
+    const data = {
+      nodes: [
+        { id: "思考法", color: "#ff4d6d" },
+        { id: "演繹", color: "#4dabf7" },
+        { id: "帰納", color: "#4dabf7" },
+        { id: "アブダクション", color: "#4dabf7" },
+        { id: "数学", color: "#ffd43b" },
+        { id: "アルゴリズム", color: "#ffd43b" },
+        { id: "因果推論", color: "#69db7c" },
+        { id: "システム思考", color: "#69db7c" }
+      ],
 
   links: [
 
