@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML ソースビューア</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        #output { border: 1px solid #ddd; padding: 1rem; background:#f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>HTML ソースビューア</h1>
+    <input id="url" type="text" placeholder="表示したい HTML の URL" size="60">
+    <button id="load">読み込む</button>
+
+    <pre id="output" class="language-html"><code></code></pre>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="viewer.js"></script>
+</body>
+</html>
