@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タブレット用デバッグページ</title>
+
+  <!-- ---- 本番環境では削除または環境変数で無効化してください ---- -->
+  <!-- Eruda 本体 -->
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <!-- 必要に応じてプラグイン -->
+  <script src="https://cdn.jsdelivr.net/npm/eruda-dom"></script>
+  <script src="https://cdn.jsdelivr.net/npm/eruda-fps"></script>
+
+  <script>
+    // デバッグツールを自動起動
+    // 本番で無効化したい場合は、環境変数やクエリパラメータで制御してください。
+    // 例: if (location.search.includes('debug')) { eruda.init(); }
+    eruda.init();
+    // 任意プラグインを追加
+    eruda.add(erudaDom());
+    eruda.add(erudaFps());
+  </script>
+
+  <style>
+    /* Eruda アイコンの位置調整（好みで変更） */
+    .eruda-toggle {
+      bottom: 12px !important;
+      right: 12px !important;
+      z-index: 99999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>タブレットでのデバッグテストページ</h1>
+  <p>このページをタブレットで開くと画面右下に Eruda のアイコンが表示され、タップでコンソール・要素検査等が利用できます。</p>
+
+  <!-- デモ用の簡単なスクリプト -->
+  <button id="testBtn">コンソールに文字を出す</button>
+  <script>
+    document.getElementById('testBtn').addEventListener('click', () => {
+      console.log('ボタンがクリックされました！');
+      alert('コンソールにログが出ました。');
+    });
+  </script>
+
+</body>
+</html>
