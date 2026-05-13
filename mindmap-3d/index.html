@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindMap-3D</title>
-<style>
-  html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #0f172a;
-  }
-  
-  #3d-graph {
-    width: 100vw;
-    height: 100vh;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindMap-3D</title>
 
-  .info {
-    position: fixed;
-    top: 10px;
-    left: 10px;
+  <!-- Eruda ＊本番環境では削除-->
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script defer>eruda.init();</script>
+  <link rel="stylesheet" href="/sandbox/devtools/eruda.css">
   
-    color: white;
-    background: rgba(0,0,0,0.4);
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0f172a;
+    }
+    
+    #3d-graph {
+      width: 100vw;
+      height: 100vh;
+    }
   
-    padding: 10px;
-    border-radius: 10px;
-  
-    z-index: 10;
-    font-family: sans-serif;
-    line-height: 1.5;
-  }
-  
-</style>
+    .info {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+    
+      color: white;
+      background: rgba(0,0,0,0.4);
+    
+      padding: 10px;
+      border-radius: 10px;
+    
+      z-index: 10;
+      font-family: sans-serif;
+      line-height: 1.5;
+    }
+    
+  </style>
 </head>
 <body>
   <div class="info">
