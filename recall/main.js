@@ -31,9 +31,9 @@ async function loadCSV(csvPath) {
 // 平均時間表示関数
 function showAverage() {
   const count = questions.length - 1;               // 最後のページは除外
-  const avgMs = (endTime - startTime) / count;      // ミリ秒
+  const avgSec = (endTime - startTime) / 1000 / count; // ミリ秒→秒 に変換
   const avgEl = document.getElementById('avgTime');
-  avgEl.textContent = `${avgMs.toFixed(1)} ms`;
+  avgEl.textContent = `${avgSec.toFixed(2)} s`;
 }
 
 // -----------------------------------------------------------------
