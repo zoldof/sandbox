@@ -1,6 +1,6 @@
-  /* Eruda アイコンの位置調整（好みで変更） */
-  .eruda-toggle {
-    bottom: 12px !important;
-    right: 12px !important;
-    z-index: 99999;
-  }
+/* Eruda アイコンの位置調整（好みで変更） */
+.eruda-toggle {
+  bottom: 12px !important;
+  right: 12px !important;
+  z-index: 99999;
+}
