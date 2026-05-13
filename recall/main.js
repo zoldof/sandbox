@@ -33,7 +33,7 @@ function showAverage() {
   const count = questions.length - 1;               // 最後のページは除外
   const avgSec = (endTime - startTime) / 1000 / count; // ミリ秒→秒 に変換
   const avgEl = document.getElementById('avgTime');
-  avgEl.textContent = `${avgSec.toFixed(2)} s`;
+  avgEl.textContent = `${avgSec.toFixed(2)} s/p`;
 }
 
 // -----------------------------------------------------------------
