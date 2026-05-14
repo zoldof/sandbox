@@ -1,5 +1,9 @@
-import { shuffle } from "/sandbox/recall/util.js";
+import { shuffle, showAverage } from "/sandbox/recall/util.js";
 import { createNavigator } from "/sandbox/recall/nav.js";
+
+// ----  ----
+let startTime = null;
+let endTime = null;
 
 // ---- 画像ファイルを取得 & 件数取得 ----
 async function loadSlides(max = 30) {
@@ -25,6 +29,14 @@ function renderImg(item, idx) {
   const el = document.getElementById("question");
   el.innerHTML = `<img src="${item.src}" class="slide-img">`;
 
+  // 平均所要時間を計算する
+  if (idx === 0) startTime = performance.now();
+  if (idx === slides.length - 1) {
+    endTime = performance.now();
+    const avgEl = document.getElementById('avgTime');
+    avgEl.textContent = showAverage(slides, startTime, endTime);
+  }
+  
   // 右上の進捗を更新
   const prog = document.getElementById("progress");
   prog.textContent = `${idx + 1} / ${slides.length}`;
