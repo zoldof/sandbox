@@ -1,4 +1,4 @@
-import { shuffle } from "/sandbox/recall/util.js";
+import { shuffle, showAverag } from "/sandbox/recall/util.js";
 import { createNavigator } from "/sandbox/recall/nav.js";
 
 // -----------------------------------------------------------------
@@ -26,14 +26,6 @@ async function loadCSV(csvPath) {
     const [answer, question] = line.split(",");
     return { answer, question };
   });
-}
-
-// 平均時間表示関数
-function showAverage() {
-  const count = questions.length - 1;               // 最後のページは除外
-  const avgSec = (endTime - startTime) / 1000 / count; // ミリ秒→秒 に変換
-  const avgEl = document.getElementById('avgTime');
-  avgEl.textContent = `${avgSec.toFixed(2)} s/q`;
 }
 
 // -----------------------------------------------------------------
@@ -90,15 +82,11 @@ function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
   
-  if (idx === 0) {
-    // 1 ページ目が表示された瞬間に開始
-    startTime = performance.now();
-  }
-
+  if (idx === 0) startTime = performance.now();
   if (idx === questions.length - 1) {
-    // 最後のページが表示された瞬間に終了
     endTime = performance.now();
-    showAverage();          // 平均を計算・表示
+    const avgEl = document.getElementById('avgTime');
+    avgEl.textContent = showAverage(questions, startTime, endTime);
   }
 }
 
