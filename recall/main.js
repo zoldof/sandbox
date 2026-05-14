@@ -7,7 +7,7 @@ import { createNavigator } from "/sandbox/recall/nav.js";
 
 const general = "shortcut"; // 現状ではデフォルトショートカット機能は未使用
 const counts = 30;
-const MAX_TIME_MS = 10 * 60 * 1000;
+const MAX_TIME_MS = 10 * 1000;
 let STORAGE_KEY = "";
 let rawData = [];
 let questions = [];
