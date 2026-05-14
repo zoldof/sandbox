@@ -33,13 +33,6 @@ body {
   white-space: nowrap;
 }
 
-#avgTime {
-  position: fixed;
-  right:55px;
-  top:10px;
-  font-size:14px;
-}
-
 /* 右上：進捗 */
 #progress {
   position: fixed;
@@ -47,6 +40,15 @@ body {
   top: 10px;
   font-size: 14px;
 }
+
+/* 右上：計測 */
+#avgTime {
+  position: fixed;
+  right: 10px;
+  top: 24px;
+  font-size: 14px;
+}
+
 
 /* ボタン共通 */
 .btn {
