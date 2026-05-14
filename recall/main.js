@@ -82,8 +82,8 @@ function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
   
-  if (idx === 0) startTime = performance.now();
-  if (idx === questions.length - 1) {
+  if (startTime === null && idx === 0) startTime = performance.now();
+  if (endTime === null && idx === questions.length - 1) {
     endTime = performance.now();
     const avgEl = document.getElementById('avgTime');
     avgEl.textContent = showAverage(questions, startTime, endTime);
