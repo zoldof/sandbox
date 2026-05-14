@@ -12,7 +12,7 @@ let endTime = null;
 // ---------- 描画 ----------
 function render() {
   const el = document.getElementById("typing");
-  el.textContent = remaining.join('');
+  el.textContent = remaining.join(' ');
   const prog = document.getElementById("progress");
   prog.textContent = `${current + 1} / ${problems.length}`;
 }
