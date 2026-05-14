@@ -39,12 +39,12 @@ function setupKeyHandler() {
       e.preventDefault();
       if (remaining.length === 0) {
         next();
-        // 平均所要時間計測
-        if (current === problems.length - 1) {
-          endTime = performance.now();
-          const avgEl = document.getElementById('avgTime');
-          avgEl.textContent = showAverage(problems, startTime, endTime);
-        }
+      }
+      // 平均所要時間計測
+      if (endTime === null && current === problems.length - 1 && remaining.length === 0) {
+        endTime = performance.now();
+        const avgEl = document.getElementById('avgTime');
+        avgEl.textContent = showAverage(problems, startTime, endTime);
       }
       return;
     }
@@ -66,5 +66,5 @@ function setupKeyHandler() {
 
 // ---------- 初期化 ----------
 setCurrentProblem(0);
-if (startTime === null) startTime = performance.now();
+startTime = performance.now();
 setupKeyHandler();
