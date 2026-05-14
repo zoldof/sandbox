@@ -1,4 +1,4 @@
-import { generateProblems } from "/sandbox/recall/util.js";
+import { generateProblems, showAverage } from "/sandbox/recall/util.js";
 
 const length = 8;
 const count  = 10;
@@ -6,6 +6,8 @@ const problems = generateProblems(count, length);
 
 let current = 0;
 let remaining = [];
+let startTime = null;
+let endTime = null;
 
 // ---------- 描画 ----------
 function render() {
@@ -37,6 +39,12 @@ function setupKeyHandler() {
       e.preventDefault();
       if (remaining.length === 0) {
         next();
+        // 平均所要時間計測
+        if (current === problems.length - 1) {
+          endTime = performance.now();
+          const avgEl = document.getElementById('avgTime');
+          avgEl.textContent = showAverage(problems, startTime, endTime);
+        }
       }
       return;
     }
@@ -58,4 +66,5 @@ function setupKeyHandler() {
 
 // ---------- 初期化 ----------
 setCurrentProblem(0);
+if (startTime === null) startTime = performance.now();
 setupKeyHandler();
