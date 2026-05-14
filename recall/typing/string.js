@@ -38,13 +38,14 @@ function setupKeyHandler() {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
+        // 平均所要時間計測
+        if (endTime === null && current === problems.length - 1) {
+          endTime = performance.now();
+          const avgEl = document.getElementById('avgTime');
+          avgEl.textContent = showAverage(problems, startTime, endTime);
+        }
+        // 画面遷移
         next();
-      }
-      // 平均所要時間計測
-      if (endTime === null && current === problems.length - 1 && remaining.length === 0) {
-        endTime = performance.now();
-        const avgEl = document.getElementById('avgTime');
-        avgEl.textContent = showAverage(problems, startTime, endTime);
       }
       return;
     }
