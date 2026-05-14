@@ -27,7 +27,7 @@ body {
 
 /* タイピング問題 */
 #typing {
-  width: 15ch;
+  width: 8ch;
   font-family: monospace;
   font-size: 48px;
   text-align: right;
