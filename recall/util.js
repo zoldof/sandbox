@@ -35,3 +35,11 @@ export function shuffle(array) {
   }
   return array;
 }
+
+// ある遂行処理の所要時間平均を計算する
+export function showAverage(array, start, end) {
+  const count = array.length - 1;               // 最後のページは除外
+  const avgSec = (end - start) / 1000 / count; // ミリ秒→秒 に変換
+  const avgText = `${avgSec.toFixed(2)} s/q`;
+  return avgText;
+}
