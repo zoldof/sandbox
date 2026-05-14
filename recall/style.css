@@ -27,10 +27,11 @@ body {
 
 /* タイピング問題 */
 #typing {
-  width: 45%; 
+  width: 15ch;
+  font-family: monospace;
   font-size: 48px;
   text-align: right;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 /* 右上：進捗 */
