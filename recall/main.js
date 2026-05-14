@@ -30,6 +30,24 @@ async function loadCSV(csvPath) {
   });
 }
 
+// タイマー初期設定
+function timer(){
+  const avgEl = document.getElementById('avgTime');
+  if (startTime !== null && endTime === null) {
+    clearTimeout(timerId); 
+    endTime = performance.now();
+    avgEl.textContent = showAverage(questions, startTime, endTime);
+    return;
+  }
+  startTime = performance.now();
+
+  // 上限時間が来たら自動で計測終了
+  timerId = setTimeout(() => {
+    endTime = performance.now();
+    avgEl.textContent = "計測上限超過";
+  }, MAX_TIME_MS);
+}
+
 // -----------------------------------------------------------------
 // ③ 状態保存・ロード
 // -----------------------------------------------------------------
@@ -83,20 +101,7 @@ function getTodayQuestions() {
 function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
-  
-  if (startTime === null && idx === 0) {
-    startTime = performance.now();
-    const avgEl = document.getElementById('avgTime');
-  }
-  if (endTime === null && idx === questions.length - 1) {
-    endTime = performance.now();
-    avgEl.textContent = showAverage(questions, startTime, endTime);
-  }
-  // 上限時間が来たら自動で計測終了
-  timerId = setTimeout(() => {
-    endTime = startTime + MAX_TIME_MS;   // 上限時間で確定
-    avgEl.textContent = "計測上限超過";
-  }, MAX_TIME_MS);
+  if(idx === questions.length - 1) timer();
 }
 
 // -----------------------------------------------------------------
@@ -156,7 +161,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("nextBtn")
   );
 
+  // タイマー関連変数をリセット
+  startTime = null;
+  endTime   = null;
+  clearTimeout(timerId);
+  timerId = null;
+
   // 最初のページを表示
   render(0);
-  nav.updateButtons(); 
+  timer();
+  nav.updateButtons();
 });
