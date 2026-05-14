@@ -84,20 +84,18 @@ function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
   
-  if (startTime === null && idx === 0) {
-    startTime = performance.now();
-    // 上限時間が来たら自動で計測終了
-    timerId = setTimeout(() => {
-      endTime = startTime + MAX_TIME_MS;   // 上限時間で確定
-      const avgEl = document.getElementById('avgTime');
-      avgEl.textContent = "計測上限超過";
-    }, MAX_TIME_MS);
-  }
+  if (startTime === null && idx === 0) startTime = performance.now();
   if (endTime === null && idx === questions.length - 1) {
     endTime = performance.now();
     const avgEl = document.getElementById('avgTime');
     avgEl.textContent = showAverage(questions, startTime, endTime);
   }
+  // 上限時間が来たら自動で計測終了
+  timerId = setTimeout(() => {
+    endTime = startTime + MAX_TIME_MS;   // 上限時間で確定
+    const avgEl = document.getElementById('avgTime');
+    avgEl.textContent = "計測上限超過";
+  }, MAX_TIME_MS);
 }
 
 // -----------------------------------------------------------------
