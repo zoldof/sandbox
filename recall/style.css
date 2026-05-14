@@ -67,13 +67,6 @@ body {
   top: 10px;
 }
 
-#navSelect {
-  position: absolute;
-  left: 48px;
-  top: 17px;
-  width: 18px;
-}
-
 /* 左下 */
 #prevBtn {
   left: 10px;
@@ -84,4 +77,11 @@ body {
 #nextBtn {
   right: 10px;
   bottom: 10px;
+}
+
+#navSelect {
+  position: absolute;
+  right: 48px;
+  bottom: 10px;
+  width: 18px;
 }
