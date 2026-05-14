@@ -1,4 +1,4 @@
-import { shuffle, showAverag } from "/sandbox/recall/util.js";
+import { shuffle, showAverage } from "/sandbox/recall/util.js";
 import { createNavigator } from "/sandbox/recall/nav.js";
 
 // -----------------------------------------------------------------
