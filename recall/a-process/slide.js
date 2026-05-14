@@ -1,7 +1,7 @@
 import { shuffle, showAverage } from "/sandbox/recall/util.js";
 import { createNavigator } from "/sandbox/recall/nav.js";
 
-// ----  ----
+// ---- グローバル変数 ----
 let startTime = null;
 let endTime = null;
 
