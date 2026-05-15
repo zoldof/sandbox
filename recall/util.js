@@ -45,7 +45,7 @@ export function showAverage2(array, start, end) {
 }
 
 // ある遂行処理の平均所要時間を計算する
-export function showAverage(array, start, MAX_TIME, avgEl){
+export function showAverage(array, start, avgEl){
   if (start !== null && avgEl.textContent === "") {
     clearTimeout(timerId); 
     const end = performance.now();
