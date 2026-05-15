@@ -15,7 +15,7 @@ let questions = [];
 const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
 let timerId = null;
-let avgEl = null;
+let avgTime = null;
 let mesrBtn = null;
 
 // -----------------------------------------------------------------
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   });
   mesrBtn.addEventListener('click', () => {
-    startTime = showAverage(questions, startTime, timerId, avgEl);
+    startTime = showAverage(questions, startTime, timerId, avgTime);
     mesrBtn.disabled = true;
   });
   
@@ -152,9 +152,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
   // 平均所要時間を計測する
-  avgEl = document.getElementById('avgTime');
-  startTime = showAverage(questions, startTime, timerId, avgEl);
-  timerId = setTimeout(() => { avgEl.textContent = "計測上限超過"; }, MAX_TIME_MS);
+  avgTime = document.getElementById('avgTime');
+  startTime = showAverage(questions, startTime, timerId, avgTime);
+  timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
   // 最初のページを表示
   render(0);
