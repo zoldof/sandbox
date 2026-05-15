@@ -37,14 +37,6 @@ export function shuffle(array) {
 }
 
 // ある遂行処理の平均所要時間を計算する
-export function showAverage2(array, start, end) {
-  const count = array.length;
-  const avgSec = (end - start) / 1000 / count; // ミリ秒→秒 に変換
-  const avgText = `${avgSec.toFixed(2)} s/q`;
-  return avgText;
-}
-
-// ある遂行処理の平均所要時間を計算する
 export function showAverage(array, start, timerId, avgEl){
   if (start !== null && avgEl.textContent === "") {
     clearTimeout(timerId); 
