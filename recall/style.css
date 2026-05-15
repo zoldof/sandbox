@@ -42,7 +42,7 @@ body {
   font-size: 14px;
 }
 
-/* 右上：計測 */
+/* 右上：計測結果表示 */
 #avgTime {
   position: fixed;
   right: 10px;
@@ -82,18 +82,13 @@ body {
   bottom: 10px;
 }
 
-/* 右下：計測結果 */
+/* 右下：計測 */
 #mesrBtn {
   right: 10px;
   bottom: 38px;
 }
 
-#onlyChk {
-  position: fixed;
-  left: 10px;
-  top: 38px;
-}
-  
+/* 右下：訓練種別変更 */
 #navSelect {
   position: fixed;
   width: 18px;
