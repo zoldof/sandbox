@@ -15,6 +15,7 @@ let questions = [];
 const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
 let timerId = null;
+let avgEl = null;
 
 // -----------------------------------------------------------------
 // ② ユーティリティー
@@ -31,7 +32,7 @@ async function loadCSV(csvPath) {
   });
 }
 
-// タイマー初期設定
+// タイマー上限設定
 function timer(){
   const avgEl = document.getElementById('avgTime');
   if (startTime !== null && endTime === null) {
@@ -102,7 +103,7 @@ function getTodayQuestions() {
 function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
-  if(idx === questions.length - 1) timer();
+  if(idx === questions.length - 1) startTime = showAverage(questions, startTime, avgEl);
 }
 
 // -----------------------------------------------------------------
@@ -162,8 +163,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("nextBtn")
   );
 
+  // 平均所要時間を計測する
+  avgEl = document.getElementById('avgTime');
+  startTime = showAverage(questions, startTime, avgEl);
+  timerId = setTimeout(() => { avgEl.textContent = "計測上限超過"; }, MAX_TIME_MS);
+
   // 最初のページを表示
   render(0);
-  timer();
   nav.updateButtons();
 });
