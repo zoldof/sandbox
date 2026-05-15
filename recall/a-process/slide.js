@@ -2,8 +2,11 @@ import { shuffle, showAverage } from "/sandbox/recall/util.js";
 import { createNavigator } from "/sandbox/recall/nav.js";
 
 // ---- グローバル変数 ----
+const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
-let endTime = null;
+let timerId = null;
+let avgEl = null;
+let mesrBtn = null;
 
 // ---- 画像ファイルを取得 & 件数取得 ----
 async function loadSlides(max = 30) {
@@ -33,13 +36,9 @@ function renderImg(item, idx) {
   const prog = document.getElementById("progress");
   prog.textContent = `${idx + 1} / ${slides.length}`;
   
-  // 平均所要時間を計算する
-  if (startTime === null && idx === 0) startTime = performance.now();
-  if (endTime === null && idx === slides.length - 1) {
-    endTime = performance.now();
-    const avgEl = document.getElementById('avgTime');
-    avgEl.textContent = showAverage(slides, startTime, endTime);
-  }
+  // 平均所要時間の計測ボタンを表示する
+  if (idx === slides.length - 1) mesrBtn.hidden = false;
+  avgEl.textContent = showAverage(slides, startTime, timerId, avgEl);
 }
 
 // ---------- ナビゲータ作成 ----------
@@ -50,6 +49,10 @@ nav.bindButtons(
   document.getElementById("prevBtn"),
   document.getElementById("nextBtn")
 );
+
+// 平均所要時間の計測準備
+mesrBtn = document.getElementById('avgTime');
+avgEl = document.getElementById('avgTime');
 
 // 初回描画
 renderImg(shuffledSlides[0], 0);
