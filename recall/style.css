@@ -90,9 +90,8 @@ body {
 
 #onlyChk {
   position: fixed;
-  width: 50px;
+  width: 25px;
   height: 25px;
-  left: 0px;
   top: 38px;
 }
   
