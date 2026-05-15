@@ -67,7 +67,7 @@ function setupKeyHandler() {
 }
 
 // 平均所要時間の計測を開始する
-avgEl = document.getElementById('avgTime');
+avgTime = document.getElementById('avgTime');
 startTime = showAverage(problems, startTime, timerId, avgTime);
 timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
