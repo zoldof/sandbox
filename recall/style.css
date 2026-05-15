@@ -88,6 +88,14 @@ body {
   bottom: 38px;
 }
 
+#onlyChk {
+  position: fixed;
+  width: 35px;
+  height: 25px;
+  right: 10px;
+  top: 38px;
+}
+  
 #navSelect {
   position: fixed;
   width: 18px;
