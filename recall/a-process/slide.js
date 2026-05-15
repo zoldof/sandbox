@@ -49,10 +49,12 @@ nav.bindButtons(
   document.getElementById("nextBtn")
 );
 
-// 平均所要時間の計測準備
-mesrBtn = document.getElementById('avgTime');
+// 平均所要時間を計測する
 avgEl = document.getElementById('avgTime');
+startTime = showAverage(questions, startTime, timerId, avgEl);
+timerId = setTimeout(() => { avgEl.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
+mesrBtn = document.getElementById('avgTime');
 mesrBtn.addEventListener('click', () => {
   startTime = showAverage(questions, startTime, timerId, avgEl);
   mesrBtn.disabled = true;
