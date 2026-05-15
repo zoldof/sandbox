@@ -12,7 +12,7 @@ let STORAGE_KEY = "";
 let rawData = [];
 let questions = [];
 
-const MAX_TIME_MS = 20 * 1000;
+const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
 let timerId = null;
 let avgEl = null;
