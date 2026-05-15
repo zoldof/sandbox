@@ -9,7 +9,7 @@ let avgTime = null;
 let mesrBtn = null;
 
 // ---- 画像ファイルを取得 & 件数取得 ----
-async function loadSlides(max = 30) {
+/* async function loadSlides(max = 30) {
   const slides = [];
   for (let i = 1; i <= max; i++) {
     const file = `images/${String(i).padStart(2, '0')}.jpg`;
@@ -18,6 +18,13 @@ async function loadSlides(max = 30) {
     slides.push({ src: file });
   }
   return slides;
+} */
+
+const IMAGE_COUNT = 7;
+async function loadSlides() {
+  return Array.from({ length: IMAGE_COUNT }, (_, i) => ({
+    src: `images/${String(i + 1).padStart(2, '0')}.jpg`
+  }));
 }
 
 const slides = await loadSlides();
