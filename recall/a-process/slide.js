@@ -5,7 +5,7 @@ import { createNavigator } from "/sandbox/recall/nav.js";
 const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
 let timerId = null;
-let avgEl = null;
+let avgTime = null;
 let mesrBtn = null;
 
 // ---- 画像ファイルを取得 & 件数取得 ----
@@ -50,13 +50,13 @@ nav.bindButtons(
 );
 
 // 平均所要時間を計測する
-avgEl = document.getElementById('avgTime');
-startTime = showAverage(shuffledSlides, startTime, timerId, avgEl);
-timerId = setTimeout(() => { avgEl.textContent = "計測上限超過"; }, MAX_TIME_MS);
+avgTime = document.getElementById('avgTime');
+startTime = showAverage(shuffledSlides, startTime, timerId, avgTime);
+timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
 mesrBtn = document.getElementById('mesrBtn');
 mesrBtn.addEventListener('click', () => {
-  startTime = showAverage(shuffledSlides, startTime, timerId, avgEl);
+  startTime = showAverage(shuffledSlides, startTime, timerId, avgTime);
   mesrBtn.disabled = true;
 });
 
