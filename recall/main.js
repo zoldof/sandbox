@@ -33,24 +33,6 @@ async function loadCSV(csvPath) {
   });
 }
 
-// タイマー上限設定
-function timer(){
-  const avgEl = document.getElementById('avgTime');
-  if (startTime !== null && endTime === null) {
-    clearTimeout(timerId); 
-    endTime = performance.now();
-    avgEl.textContent = showAverage(questions, startTime, endTime);
-    return;
-  }
-  startTime = performance.now();
-
-  // 上限時間が来たら自動で計測終了
-  timerId = setTimeout(() => {
-    endTime = performance.now();
-    avgEl.textContent = "計測上限超過";
-  }, MAX_TIME_MS);
-}
-
 // -----------------------------------------------------------------
 // ③ 状態保存・ロード
 // -----------------------------------------------------------------
@@ -158,6 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   mesrBtn.addEventListener('click', () => {
     startTime = showAverage(questions, startTime, timerId, avgEl);
+    mesrBtn.disabled = true;
   });
   
   // データ準備 & ナビゲータ作成
