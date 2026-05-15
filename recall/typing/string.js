@@ -41,11 +41,9 @@ function setupKeyHandler() {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
-        // 平均所要時間計測
-        if (endTime === null && current === problems.length - 1) {
-          endTime = performance.now();
-          const avgEl = document.getElementById('avgTime');
-          avgEl.textContent = showAverage(problems, startTime, endTime);
+        if (current === problems.length - 1) {
+          // 平均所要時間の計測結果を表示する
+          startTime = showAverage(problems, startTime, timerId, avgTime);
         }
         // 画面遷移
         next();
@@ -68,7 +66,11 @@ function setupKeyHandler() {
   });
 }
 
+// 平均所要時間の計測を開始する
+avgEl = document.getElementById('avgTime');
+startTime = showAverage(problems, startTime, timerId, avgTime);
+timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_TIME_MS);
+
 // ---------- 初期化 ----------
 setCurrentProblem(0);
-startTime = performance.now();
 setupKeyHandler();
