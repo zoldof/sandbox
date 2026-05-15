@@ -82,6 +82,12 @@ body {
   bottom: 10px;
 }
 
+/* 右下：計測結果 */
+#mesrBtn {
+  right: 10px;
+  bottom: 38px;
+}
+
 #navSelect {
   position: fixed;
   width: 18px;
