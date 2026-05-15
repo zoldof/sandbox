@@ -38,7 +38,6 @@ function renderImg(item, idx) {
   
   // 平均所要時間の計測ボタンを表示する
   if (idx === slides.length - 1) mesrBtn.hidden = false;
-  avgEl.textContent = showAverage(slides, startTime, timerId, avgEl);
 }
 
 // ---------- ナビゲータ作成 ----------
@@ -53,6 +52,11 @@ nav.bindButtons(
 // 平均所要時間の計測準備
 mesrBtn = document.getElementById('avgTime');
 avgEl = document.getElementById('avgTime');
+
+mesrBtn.addEventListener('click', () => {
+  startTime = showAverage(questions, startTime, timerId, avgEl);
+  mesrBtn.disabled = true;
+});
 
 // 初回描画
 renderImg(shuffledSlides[0], 0);
