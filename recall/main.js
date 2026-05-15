@@ -103,7 +103,9 @@ function getTodayQuestions() {
 function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
-  if(idx === questions.length - 1) startTime = showAverage(questions, startTime, avgEl);
+  if(idx === questions.length - 1) {
+    startTime = showAverage(questions, startTime, timerId, avgEl);
+  }
 }
 
 // -----------------------------------------------------------------
@@ -165,7 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 平均所要時間を計測する
   avgEl = document.getElementById('avgTime');
-  startTime = showAverage(questions, startTime, avgEl);
+  startTime = showAverage(questions, startTime, timerId, avgEl);
   timerId = setTimeout(() => { avgEl.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
   // 最初のページを表示
