@@ -37,9 +37,30 @@ export function shuffle(array) {
 }
 
 // ある遂行処理の平均所要時間を計算する
-export function showAverage(array, start, end) {
+export function showAverage2(array, start, end) {
   const count = array.length;
   const avgSec = (end - start) / 1000 / count; // ミリ秒→秒 に変換
   const avgText = `${avgSec.toFixed(2)} s/q`;
   return avgText;
 }
+
+// ある遂行処理の平均所要時間を計算する
+export function showAverage(array, start, MAX_TIME, avgEl){
+  if (start !== null && avgEl.textContent === "") {
+    clearTimeout(timerId); 
+    end = performance.now();
+    const avgSec = (end - start) / 1000 / array.length; // ミリ秒→秒 に変換
+    const avgText = `${avgSec.toFixed(2)} s/q`;
+    avgEl.textContent = avgText;
+    return null;
+  }
+  start = performance.now();
+
+  // 上限時間が来たら自動で計測終了
+  timerId = setTimeout(() => {
+    avgEl.textContent = "計測上限超過";
+  }, MAX_TIME);
+
+  return start;
+}
+
