@@ -16,6 +16,7 @@ const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
 let timerId = null;
 let avgEl = null;
+let mesrBtn = null;
 
 // -----------------------------------------------------------------
 // ② ユーティリティー
@@ -103,9 +104,7 @@ function getTodayQuestions() {
 function render(idx) {
   document.getElementById("question").innerText = questions[idx];
   document.getElementById("progress").innerText = `${idx + 1} / ${questions.length}`;
-  if(idx === questions.length - 1) {
-    startTime = showAverage(questions, startTime, timerId, avgEl);
-  }
+  if(idx === questions.length - 1) mesrBtn.hidden = false;
 }
 
 // -----------------------------------------------------------------
@@ -144,6 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 変数にボタン要素を格納
   const answBtn = document.getElementById('answBtn');
   const shctBtn = document.getElementById('shctBtn');
+  mesrBtn = document.getElementById('mesrBtn');
 
   // イベントハンドラ設定
   answBtn.addEventListener('click', () => {
@@ -155,6 +155,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     newPath = segments.join('/');
     externalUrl = `${origin}/${newPath}/${general}/`;
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
+  });
+  mesrBtn.addEventListener('click', () => {
+    startTime = showAverage(questions, startTime, timerId, avgEl);
   });
   
   // データ準備 & ナビゲータ作成
