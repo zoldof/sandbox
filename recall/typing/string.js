@@ -6,8 +6,11 @@ const problems = generateProblems(count, length);
 
 let current = 0;
 let remaining = [];
+
+const MAX_TIME_MS = 10 * 60 * 1000;
 let startTime = null;
-let endTime = null;
+let timerId = null;
+let avgTime = null;
 
 // ---------- 描画 ----------
 function render() {
