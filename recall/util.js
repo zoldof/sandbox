@@ -55,12 +55,6 @@ export function showAverage(array, start, MAX_TIME, avgEl){
     return null;
   }
   start = performance.now();
-
-  // 上限時間が来たら自動で計測終了
-  timerId = setTimeout(() => {
-    avgEl.textContent = "計測上限超過";
-  }, MAX_TIME);
-
   return start;
 }
 
