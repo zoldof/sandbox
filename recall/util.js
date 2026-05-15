@@ -48,7 +48,7 @@ export function showAverage2(array, start, end) {
 export function showAverage(array, start, MAX_TIME, avgEl){
   if (start !== null && avgEl.textContent === "") {
     clearTimeout(timerId); 
-    end = performance.now();
+    const end = performance.now();
     const avgSec = (end - start) / 1000 / array.length; // ミリ秒→秒 に変換
     const avgText = `${avgSec.toFixed(2)} s/q`;
     avgEl.textContent = avgText;
