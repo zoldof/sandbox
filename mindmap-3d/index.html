@@ -53,24 +53,20 @@
   <script>
     const data = {
       nodes: [
-        { id: "思考法", color: "#ff4d6d" },
-        { id: "演繹", color: "#4dabf7" },
-        { id: "帰納", color: "#4dabf7" },
-        { id: "アブダクション", color: "#4dabf7" },
+        { id: "形而上学", color: "#ff4d6d" },
+        { id: "哲学", color: "#4dabf7" },
         { id: "数学", color: "#ffd43b" },
         { id: "アルゴリズム", color: "#ffd43b" },
-        { id: "因果推論", color: "#69db7c" },
-        { id: "システム思考", color: "#69db7c" }
+        { id: "プログラミング", color: "#69db7c" },
+        { id: "エンジニアリング", color: "#69db7c" }
       ],
 
       links: [
-        { source: "思考法", target: "演繹" },
-        { source: "思考法", target: "帰納" },
-        { source: "思考法", target: "アブダクション" },
-        { source: "演繹", target: "数学" },
+        { source: "形而上学", target: "哲学" },
+        { source: "哲学", target: "帰数学納" },
         { source: "数学", target: "アルゴリズム" },
-        { source: "帰納", target: "因果推論" },
-        { source: "因果推論", target: "システム思考" }
+        { source: "数学", target: "プログラミング" },
+        { source: "プログラミング", target: "エンジニアリング" }
       ]
     };
 
