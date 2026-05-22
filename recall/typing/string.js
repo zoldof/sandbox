@@ -66,6 +66,14 @@ function setupKeyHandler() {
   });
 }
 
+// ---------- フォーカス設定 ----------
+function enableBodyKeyboardFocus() {
+  const body = document.body;
+  // フォーカス可能にする（tabindex -1 はプログラムからだけフォーカスできる）
+  body.setAttribute('tabindex', '-1');
+  body.focus();
+}
+
 // 平均所要時間の計測を開始する
 avgTime = document.getElementById('avgTime');
 startTime = showAverage(problems, startTime, timerId, avgTime);
@@ -74,3 +82,4 @@ timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_
 // ---------- 初期化 ----------
 setCurrentProblem(0);
 setupKeyHandler();
+window.addEventListener('load', () => enableBodyKeyboardFocus());
