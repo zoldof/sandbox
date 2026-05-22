@@ -54,9 +54,9 @@
     const data = {
       nodes: [
         { id: "形而上学", color: "#ff4d6d" },
-        { id: "哲学", color: "#4dabf7" },
-        { id: "数学", color: "#ffd43b" },
-        { id: "アルゴリズム", color: "#ffd43b" },
+        { id: "哲学", color: "#ffd43b" },
+        { id: "数学", color: "#4dabf7" },
+        { id: "アルゴリズム", color: "#4dabf7" },
         { id: "プログラミング", color: "#69db7c" },
         { id: "エンジニアリング", color: "#69db7c" }
       ],
@@ -66,6 +66,7 @@
         { source: "哲学", target: "数学" },
         { source: "数学", target: "アルゴリズム" },
         { source: "数学", target: "プログラミング" },
+        { source: "アルゴリズム", target: "プログラミング" },
         { source: "プログラミング", target: "エンジニアリング" }
       ]
     };
