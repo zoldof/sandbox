@@ -66,6 +66,13 @@ function setupKeyHandler() {
   });
 }
 
+/* ----- クリックでフォーカス対応 ----- */
+function hideHint() {
+  const hint = document.getElementById('focusHint');
+  if (hint) hint.style.display = 'none';
+}
+document.getElementById('focusHint').addEventListener('click', hideHint);
+
 // 平均所要時間の計測を開始する
 avgTime = document.getElementById('avgTime');
 startTime = showAverage(problems, startTime, timerId, avgTime);
