@@ -52,8 +52,10 @@ body {
 
 /* 左上 タイピング*/
 #focusHint {
+  position: fixed;
   left: 10px;
   top: 10px;
+  font-size: 14px;
 }
 
 /* ボタン共通 */
