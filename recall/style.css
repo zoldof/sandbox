@@ -50,6 +50,11 @@ body {
   font-size: 14px;
 }
 
+/* 左上 タイピング*/
+#focusHint {
+  left: 10px;
+  top: 10px;
+}
 
 /* ボタン共通 */
 .btn {
