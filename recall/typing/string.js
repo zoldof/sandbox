@@ -71,7 +71,7 @@ function enableBodyKeyboardFocus() {
   const body = document.body;
   // フォーカス可能にする（tabindex -1 はプログラムからだけフォーカスできる）
   body.setAttribute('tabindex', '-1');
-  body.focus();
+  requestAnimationFrame(() => body.focus());
 }
 
 // ---------- 初期化 ----------
