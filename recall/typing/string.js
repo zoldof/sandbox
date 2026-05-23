@@ -69,10 +69,7 @@ function setupKeyHandler() {
 /* ----- クリックでフォーカス対応 ----- */
 let hint = document.getElementById('focusHint');
 document.body.addEventListener('click', () => {
-  if (hint) { 
-    hint.remove();
-    hint = null;
-  }
+  if (hint) { hint.remove(); hint = null; }
 });
 
 // 平均所要時間の計測を開始する
