@@ -41,15 +41,7 @@ function next() {
 
 // ---------- キー入力 ----------
 function setupKeyHandler() {
-  document.addEventListener('keydown', (e) => {
-
-    console.log({
-      key: e.key,
-      typed,
-      expected,
-      remaining: remaining.join("")
-    });
-    
+  document.addEventListener('keydown', (e) => {  
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
@@ -75,6 +67,14 @@ function setupKeyHandler() {
     } else {
       setCurrentProblem(current);      // 同じ問題にリセット
     }
+
+    console.log({
+      key: e.key,
+      typed,
+      expected,
+      remaining: remaining.join("")
+    });
+    
   });
 }
 
