@@ -42,6 +42,14 @@ function next() {
 // ---------- キー入力 ----------
 function setupKeyHandler() {
   document.addEventListener('keydown', (e) => {
+
+    console.log({
+      key: e.key,
+      typed,
+      expected,
+      remaining: remaining.join("")
+    });
+    
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
@@ -89,13 +97,6 @@ setupKeyHandler();
 
 console.log("focus", document.hasFocus());
 console.log("visibility", document.visibilityState);
-
-console.log({
-  key: e.key,
-  typed,
-  expected,
-  remaining: remaining.join("")
-});
 
 console.log(remaining);
 console.log(current);
