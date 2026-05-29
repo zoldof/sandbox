@@ -80,5 +80,6 @@ startTime = showAverage(problems, startTime, timerId, avgTime);
 timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
 // ---------- 初期化 ----------
+document.body.focus();
 setCurrentProblem(0);
 setupKeyHandler();
