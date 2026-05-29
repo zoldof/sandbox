@@ -38,6 +38,9 @@ function next() {
 // ---------- キー入力 ----------
 function setupKeyHandler() {
   document.body.addEventListener('keydown', (e) => {
+    if (document.activeElement !== document.body) {
+      document.body.focus();
+    }
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
