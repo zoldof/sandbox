@@ -83,18 +83,11 @@ timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_
 setCurrentProblem(0);
 setupKeyHandler();
 
-window.addEventListener("load", () => {
-    document.body.focus();
-});
-
-window.addEventListener("focus", () => {
-  console.log("window focus");
-});
-
-window.addEventListener("blur", () => {
-  console.log("window blur");
-});
-
 document.addEventListener("visibilitychange", () => {
-  console.log(document.visibilityState);
+  console.log(
+    "visibility:",
+    document.visibilityState,
+    "focus:",
+    document.hasFocus()
+  );
 });
