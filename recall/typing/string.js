@@ -84,10 +84,13 @@ setCurrentProblem(0);
 setupKeyHandler();
 
 document.addEventListener("visibilitychange", () => {
-  console.log(
-    "visibility:",
-    document.visibilityState,
-    "focus:",
-    document.hasFocus()
-  );
+  if (!document.hidden) {
+    document.body.focus();
+
+    console.log(
+      "after focus:",
+      document.activeElement === document.body,
+      document.hasFocus()
+    );
+  }
 });
