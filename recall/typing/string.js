@@ -12,6 +12,10 @@ let startTime = null;
 let timerId = null;
 let avgTime = null;
 
+window.addEventListener("keydown", (e) => {
+  console.log("KEY:", e.key);
+});
+
 // ---------- 描画 ----------
 function render() {
   const el = document.getElementById("typing");
