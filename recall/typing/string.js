@@ -86,3 +86,6 @@ timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_
 // ---------- 初期化 ----------
 setCurrentProblem(0);
 setupKeyHandler();
+
+console.log("focus", document.hasFocus());
+console.log("visibility", document.visibilityState);
