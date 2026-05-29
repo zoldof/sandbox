@@ -37,10 +37,7 @@ function next() {
 
 // ---------- キー入力 ----------
 function setupKeyHandler() {
-  document.body.addEventListener('keydown', (e) => {
-    if (document.activeElement !== document.body) {
-      document.body.focus();
-    }
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
@@ -83,6 +80,5 @@ startTime = showAverage(problems, startTime, timerId, avgTime);
 timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_TIME_MS);
 
 // ---------- 初期化 ----------
-document.body.focus();
 setCurrentProblem(0);
 setupKeyHandler();
