@@ -15,7 +15,15 @@ let avgTime = null;
 // ---------- 描画 ----------
 function render() {
   const el = document.getElementById("typing");
+  
+  console.log("render");
+  console.log(el);
+
   el.textContent = remaining.join('');
+
+  console.log(el.textContent);
+
+  
   const prog = document.getElementById("progress");
   prog.textContent = `${current + 1} / ${problems.length}`;
 }
@@ -82,15 +90,3 @@ timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_
 // ---------- 初期化 ----------
 setCurrentProblem(0);
 setupKeyHandler();
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) {
-    document.body.focus();
-
-    console.log(
-      "after focus:",
-      document.activeElement === document.body,
-      document.hasFocus()
-    );
-  }
-});
