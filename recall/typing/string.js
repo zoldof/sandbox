@@ -18,10 +18,13 @@ function render() {
   
   console.log("render");
   console.log(el);
-
+  console.log("before :", el.textContent);
+  
   el.textContent = remaining.join('');
-
-  console.log(el.textContent);
+  
+  console.log("after :", el.textContent);
+  
+  el.offsetHeight; // 強制再描画
 
   
   const prog = document.getElementById("progress");
