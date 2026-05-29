@@ -15,18 +15,7 @@ let avgTime = null;
 // ---------- 描画 ----------
 function render() {
   const el = document.getElementById("typing");
-  
-  console.log("render");
-  console.log(el);
-  console.log("before :", el.textContent);
-  
   el.textContent = remaining.join('');
-  
-  console.log("after :", el.textContent);
-  
-  el.offsetHeight; // 強制再描画
-
-  
   const prog = document.getElementById("progress");
   prog.textContent = `${current + 1} / ${problems.length}`;
 }
