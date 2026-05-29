@@ -89,3 +89,14 @@ setupKeyHandler();
 
 console.log("focus", document.hasFocus());
 console.log("visibility", document.visibilityState);
+
+console.log({
+  key: e.key,
+  typed,
+  expected,
+  remaining: remaining.join("")
+});
+
+console.log(remaining);
+console.log(current);
+console.log(problems[current]);
