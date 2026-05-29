@@ -86,3 +86,15 @@ setupKeyHandler();
 window.addEventListener("load", () => {
     document.body.focus();
 });
+
+window.addEventListener("focus", () => {
+  console.log("window focus");
+});
+
+window.addEventListener("blur", () => {
+  console.log("window blur");
+});
+
+document.addEventListener("visibilitychange", () => {
+  console.log(document.visibilityState);
+});
