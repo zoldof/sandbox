@@ -101,3 +101,5 @@ console.log("visibility", document.visibilityState);
 console.log(remaining);
 console.log(current);
 console.log(problems[current]);
+
+console.log(document.activeElement);
