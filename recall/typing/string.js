@@ -12,10 +12,6 @@ let startTime = null;
 let timerId = null;
 let avgTime = null;
 
-window.addEventListener("keydown", (e) => {
-  console.log("KEY:", e.key);
-});
-
 // ---------- 描画 ----------
 function render() {
   const el = document.getElementById("typing");
@@ -41,7 +37,7 @@ function next() {
 
 // ---------- キー入力 ----------
 function setupKeyHandler() {
-  document.addEventListener('keydown', (e) => {  
+  document.body.addEventListener('keydown', (e) => {  
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
@@ -67,14 +63,6 @@ function setupKeyHandler() {
     } else {
       setCurrentProblem(current);      // 同じ問題にリセット
     }
-
-    console.log({
-      key: e.key,
-      typed,
-      expected,
-      remaining: remaining.join("")
-    });
-    
   });
 }
 
@@ -95,11 +83,6 @@ timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_
 setCurrentProblem(0);
 setupKeyHandler();
 
-console.log("focus", document.hasFocus());
-console.log("visibility", document.visibilityState);
-
-console.log(remaining);
-console.log(current);
-console.log(problems[current]);
-
-console.log(document.activeElement);
+window.addEventListener("load", () => {
+    document.body.focus();
+});
