@@ -16,6 +16,7 @@ let avgTime = null;
 function render() {
   const el = document.getElementById("typing");
   el.textContent = remaining.join('');
+  console.log("render", el.textContent);
   const prog = document.getElementById("progress");
   prog.textContent = `${current + 1} / ${problems.length}`;
 }
@@ -74,12 +75,6 @@ window.addEventListener('load', () => {
   });
 });
 */
-
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") {
-    document.body.focus();
-  }
-});
 
 // 平均所要時間の計測を開始する
 avgTime = document.getElementById('avgTime');
