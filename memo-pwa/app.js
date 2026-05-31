@@ -1,9 +1,43 @@
+/* ==== 1. ヘッダー表示フラグ ==== */
+let showHeader = true;               // 初期状態は表示
+const headerEl = document.getElementById('appHeader');
+const toggleBtn = document.getElementById('toggleHeaderBtn');
+
+/* ==== 2. トグル処理 ==== */
+function updateHeaderVisibility() {
+  if (showHeader) {
+    headerEl.style.display = 'flex';   // 必要なら CSS で layout を整える
+    toggleBtn.textContent = 'ヘッダーを隠す';
+  } else {
+    headerEl.style.display = 'none';
+    toggleBtn.textContent = 'ヘッダーを表示';
+  }
+}
+
+/* ボタンにハンドラを登録 */
+toggleBtn.addEventListener('click', () => {
+  showHeader = !showHeader;
+  updateHeaderVisibility();
+});
+
+/* ==== 3. ヘッダー内部設定 ==== */
 let fileHandle = null;
 const editor = document.getElementById("editor");
 
 document
     .getElementById("newBtn")
     .addEventListener("click", newFile);
+
+// filePicker を直接表示させず、ボタンで呼び出す
+document
+    .getElementById('openFileBtn')
+    .addEventListener('click', () => {
+      document.getElementById('filePicker').click();
+    });
+
+document
+    .getElementById('filePicker')
+    .addEventListener('change', openFile);
 
 document
     .getElementById("saveBtn")
@@ -16,10 +50,6 @@ document
 document
     .getElementById("searchInput")
     .addEventListener("input", searchText);
-
-document
-    .getElementById('filePicker')
-    .addEventListener('change', openFile);
 
 async function openFile(event) {
     const file = event.target.files[0];
