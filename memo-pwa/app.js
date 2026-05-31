@@ -1,7 +1,5 @@
 let fileHandle = null;
-
-const editor =
-    document.getElementById("editor");
+const editor = document.getElementById("editor");
 
 document
     .getElementById("newBtn")
@@ -24,15 +22,12 @@ document
     .addEventListener("input", searchText);
 
 async function newFile() {
-
     editor.value = "";
     fileHandle = null;
 }
 
 async function openFile() {
-
     try {
-
         const [handle] =
             await window.showOpenFilePicker({
                 types: [{
@@ -42,55 +37,33 @@ async function openFile() {
                     }
                 }]
             });
-
         fileHandle = handle;
-
-        const file =
-            await handle.getFile();
-
-        editor.value =
-            await file.text();
-
+        const file = await handle.getFile();
+        editor.value = await file.text();
     } catch (error) {
-
         console.error(error);
     }
 }
 
 async function saveFile() {
-
     try {
-
         if (!fileHandle) {
-
             await saveAsFile();
             return;
         }
-
-        const writable =
-            await fileHandle.createWritable();
-
-        await writable.write(
-            editor.value
-        );
-
+        const writable = await fileHandle.createWritable();
+        await writable.write( editor.value );
         await writable.close();
-
     } catch (error) {
-
         console.error(error);
     }
 }
 
 async function saveAsFile() {
-
     try {
-
         fileHandle =
             await window.showSaveFilePicker({
-
                 suggestedName: "memo.txt",
-
                 types: [{
                     description: "Text Files",
                     accept: {
@@ -98,33 +71,23 @@ async function saveAsFile() {
                     }
                 }]
             });
-
         await saveFile();
-
     } catch (error) {
-
         console.error(error);
     }
 }
 
 function searchText(event) {
-
     const keyword =
         event.target.value;
-
     if (!keyword) {
         return;
     }
-
-    const pos =
-        editor.value.indexOf(keyword);
-
+    const pos = editor.value.indexOf(keyword);
     if (pos === -1) {
         return;
     }
-
     editor.focus();
-
     editor.setSelectionRange(
         pos,
         pos + keyword.length
@@ -132,7 +95,6 @@ function searchText(event) {
 }
 
 if ("serviceWorker" in navigator) {
-
     navigator.serviceWorker
         .register("./service-worker.js")
         .catch(console.error);
