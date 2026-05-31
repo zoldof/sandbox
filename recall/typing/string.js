@@ -38,10 +38,6 @@ function next() {
 // ---------- キー入力 ----------
 function setupKeyHandler() {
   document.body.addEventListener('keydown', (e) => {  
-    console.log(
-      "key=", e.key,
-      "expected=", remaining[0]
-    );
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
@@ -70,14 +66,13 @@ function setupKeyHandler() {
   });
 }
 
-/* ----- クリックでフォーカス対応 ----- 
+/* ----- クリックでフォーカス対応 ----- */
 window.addEventListener('load', () => {
   let hint = document.getElementById('focusHint');
   document.body.addEventListener('click', () => {
     if (hint) { hint.remove(); hint = null; }
   });
 });
-*/
 
 // 平均所要時間の計測を開始する
 avgTime = document.getElementById('avgTime');
@@ -87,6 +82,3 @@ timerId = setTimeout(() => { avgTime.textContent = "計測上限超過"; }, MAX_
 // ---------- 初期化 ----------
 setCurrentProblem(0);
 setupKeyHandler();
-
-console.log(document.activeElement);
-console.log(document.hasFocus());
