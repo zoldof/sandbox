@@ -16,7 +16,6 @@ let avgTime = null;
 function render() {
   const el = document.getElementById("typing");
   el.textContent = remaining.join('');
-  console.log("render", el.textContent);
   const prog = document.getElementById("progress");
   prog.textContent = `${current + 1} / ${problems.length}`;
 }
@@ -39,6 +38,10 @@ function next() {
 // ---------- キー入力 ----------
 function setupKeyHandler() {
   document.body.addEventListener('keydown', (e) => {  
+    console.log(
+      "key=", e.key,
+      "expected=", remaining[0]
+    );
     if (e.key === 'Enter') {
       e.preventDefault();
       if (remaining.length === 0) {
