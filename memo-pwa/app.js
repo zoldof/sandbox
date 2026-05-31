@@ -6,10 +6,6 @@ document
     .addEventListener("click", newFile);
 
 document
-    .getElementById("openBtn")
-    .addEventListener("click", openFile2);
-
-document
     .getElementById("saveBtn")
     .addEventListener("click", saveFile);
 
@@ -36,25 +32,6 @@ async function openFile(event) {
 async function newFile() {
     editor.value = "";
     fileHandle = null;
-}
-
-async function openFile2() {
-    try {
-        const [handle] =
-            await window.showOpenFilePicker({
-                types: [{
-                    description: "Text Files",
-                    accept: {
-                        "text/plain": [".txt"]
-                    }
-                }]
-            });
-        fileHandle = handle;
-        const file = await handle.getFile();
-        editor.value = await file.text();
-    } catch (error) {
-        console.error(error);
-    }
 }
 
 async function saveFile() {
