@@ -7,7 +7,7 @@ document
 
 document
     .getElementById("openBtn")
-    .addEventListener("click", openFile);
+    .addEventListener("click", openFile2);
 
 document
     .getElementById("saveBtn")
@@ -21,12 +21,24 @@ document
     .getElementById("searchInput")
     .addEventListener("input", searchText);
 
+document
+    .getElementById('filePicker')
+    .addEventListener('change', openFile);
+
+async function openFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const text = await file.text();
+        document.getElementById('editor').value = text;
+    }
+}
+
 async function newFile() {
     editor.value = "";
     fileHandle = null;
 }
 
-async function openFile() {
+async function openFile2() {
     try {
         const [handle] =
             await window.showOpenFilePicker({
