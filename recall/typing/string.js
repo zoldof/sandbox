@@ -75,13 +75,10 @@ window.addEventListener('load', () => {
 });
 */
 
-window.addEventListener("load", () => {
-  document.body.tabIndex = 0;
-  document.body.focus();
-});
-
-window.addEventListener("blur", () => {
-  document.body.focus();
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    document.body.focus();
+  }
 });
 
 // 平均所要時間の計測を開始する
