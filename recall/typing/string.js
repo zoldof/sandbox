@@ -66,12 +66,22 @@ function setupKeyHandler() {
   });
 }
 
-/* ----- クリックでフォーカス対応 ----- */
+/* ----- クリックでフォーカス対応 ----- 
 window.addEventListener('load', () => {
   let hint = document.getElementById('focusHint');
   document.body.addEventListener('click', () => {
     if (hint) { hint.remove(); hint = null; }
   });
+});
+*/
+
+window.addEventListener("load", () => {
+  document.body.tabIndex = 0;
+  document.body.focus();
+});
+
+window.addEventListener("blur", () => {
+  document.body.focus();
 });
 
 // 平均所要時間の計測を開始する
