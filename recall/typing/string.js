@@ -94,3 +94,4 @@ setCurrentProblem(0);
 setupKeyHandler();
 
 console.log(document.activeElement);
+console.log(document.hasFocus());
