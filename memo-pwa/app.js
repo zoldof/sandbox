@@ -7,10 +7,10 @@ const toggleBtn = document.getElementById('toggleHeaderBtn');
 function updateHeaderVisibility() {
   if (showHeader) {
     headerEl.style.display = 'flex';   // 必要なら CSS で layout を整える
-    toggleBtn.textContent = 'ヘッダーを隠す';
+    toggleBtn.textContent = '▲';
   } else {
     headerEl.style.display = 'none';
-    toggleBtn.textContent = 'ヘッダーを表示';
+    toggleBtn.textContent = '▼';
   }
 }
 
