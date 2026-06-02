@@ -16,8 +16,8 @@ header {
 }
 
 #editor {
-    background: black;
-    color: white;
+    background: #c48a35;
+    color: 1A1A1A;
     flex: 1;
     width: 100%;
     resize: none;
