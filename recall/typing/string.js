@@ -35,11 +35,21 @@ function next() {
   }
 }
 
+/* ----- クリックでフォーカス対応 ----- */
+const hint = document.getElementById('focusHint');
+window.addEventListener('load', () => {
+  document.body.addEventListener('click', () => {
+  if (hint) hint.remove();
+  });
+});
+
 // ---------- キー入力 ----------
 function setupKeyHandler() {
   document.body.addEventListener('keydown', (e) => {  
     if (e.key === 'Enter') {
       e.preventDefault();
+      // 「クリックで開始」をエンターでも解除できる
+      if (hint) hint.remove();
       if (remaining.length === 0) {
         if (current === problems.length - 1) {
           // 平均所要時間の計測結果を表示する
@@ -65,21 +75,6 @@ function setupKeyHandler() {
     }
   });
 }
-
-/* ----- クリックでフォーカス対応 -----
-window.addEventListener('load', () => {
-  let hint = document.getElementById('focusHint');
-  document.body.addEventListener('click', () => {
-  if (hint) { hint.remove(); hint = null; }
-  });
-});
-*/
-
-window.addEventListener('focus', () => {
-  const hint = document.getElementById('focusHint');
-  if (hint) hint.remove();
-});
-
 
 // 平均所要時間の計測を開始する
 avgTime = document.getElementById('avgTime');
