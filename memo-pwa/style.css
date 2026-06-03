@@ -15,6 +15,13 @@ header {
     flex-wrap: wrap;
 }
 
+button {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
 #editor {
     flex: 1;
     width: 100%;
