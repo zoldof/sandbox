@@ -1,4 +1,5 @@
 body {
+    min-height: 0;
     margin: 0;
     height: 100vh;
     display: flex;
@@ -37,6 +38,7 @@ button {
     resize: none;
     border: none;
     outline: none;
-    padding: 12px;
+    padding: 7px;
     box-sizing: border-box;
+    overflow: auto;
 }
