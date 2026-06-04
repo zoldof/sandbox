@@ -12,6 +12,10 @@ header {
     flex-wrap: wrap;
     padding: 10px;
     gap: 8px;
+
+    position: sticky;      /* 画面上部に貼り付け */
+    top: 0;                /* 上端に合わせる */
+    z-index: 10;           /* エディターより前に出す */
 }
 
 button {
