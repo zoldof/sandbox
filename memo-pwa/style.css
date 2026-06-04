@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-#headerArea {
+#topArea {
     position: sticky;
     top: 0;
     z-index: 100;
