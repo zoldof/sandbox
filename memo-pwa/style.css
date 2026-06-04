@@ -10,6 +10,8 @@ body {
 header {
     background: sandybrown;
     display: flex;
+    position: sticky; 
+    z-index: 10;  
     flex-wrap: wrap;
     flex-shrink: 0; 
     padding: 10px;
