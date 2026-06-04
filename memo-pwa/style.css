@@ -11,9 +11,7 @@ body {
 
 header {
     background: sandybrown;
-    display: flex;
-    flex-wrap: wrap;
-    flex-shrink: 0;
+    position: fixed;
     padding: 10px;
     gap: 8px;
 }
