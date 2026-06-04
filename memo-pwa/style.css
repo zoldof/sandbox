@@ -6,16 +6,18 @@ body {
     margin: 0;
 }
 
+#headerArea {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 header {
     background: sandybrown;
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
     gap: 8px;
-
-    position: sticky;   /* 画面上部に貼り付く */
-    top: 0;              /* 直上に固定 */
-    z-index: 10;         /* エディターより前に表示 */
 }
 
 button {
