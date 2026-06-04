@@ -11,6 +11,7 @@ header {
     background: sandybrown;
     display: flex;
     flex-wrap: wrap;
+    flex-shrink: 0; 
     padding: 10px;
     gap: 8px;
 }
