@@ -10,8 +10,7 @@ body {
 #topArea {
     display: flex;
     flex-direction: column;
-    top: 0;
-    z-index: 100;
+    flex-shrink: 0;
 }
 
 header {
