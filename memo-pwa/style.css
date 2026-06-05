@@ -7,13 +7,11 @@ body {
     flex-direction: column;
     font-family: monospace;
     margin: 0;
-    overflow: hidden;
 }
 
 #topArea {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
 }
 
 header {
@@ -40,7 +38,6 @@ button {
     background: sandybrown;
     color: black;
     width: 100%;
-    flex: 1;
 
     font-size: 16px;
     font-weight: 600; 
