@@ -7,11 +7,13 @@ body {
     flex-direction: column;
     font-family: monospace;
     margin: 0;
+    overflow: hidden;
 }
 
 #topArea {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 header {
