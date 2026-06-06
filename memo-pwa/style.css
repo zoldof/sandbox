@@ -1,12 +1,13 @@
 html, body {
     height: 100%;
+    margin: 0;
 }
 
 body {
     display: flex;
     flex-direction: column;
     font-family: monospace;
-    margin-bottom: 2rem;
+    padding-bottom: 3rem;
 }
 
 #topArea {
