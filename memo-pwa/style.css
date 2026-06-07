@@ -39,7 +39,7 @@ button {
     background: sandybrown;
     color: black;
     height: 100%;
-    margin-right: 5px;
+    padding-right: 3px;
 
     font-size: 16px;
     font-weight: 600; 
