@@ -39,7 +39,6 @@ button {
     background: sandybrown;
     color: black;
     height: 100%;
-    padding-right: 3px;
 
     font-size: 16px;
     font-weight: 600; 
@@ -47,6 +46,7 @@ button {
     line-height: 1.2; 
     padding: 7px;
     box-sizing: border-box;
+    border-right: 8px solid #000000;
     overflow: auto;
     min-height: 0;
 
