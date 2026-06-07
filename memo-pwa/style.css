@@ -55,7 +55,5 @@ button {
 
 /* つまみ（現在地点）だけを装飾 */
 ::-webkit-scrollbar-thumb {
-    background-color: #6c9;   /* 好きな色に変更 */
-    border-radius:   6px;     /* 角丸 */
-    border: 2px solid #f0f0f0;/* トラックと区別しやすくする */
+    background-color: saddlebrown;   /* 好きな色に変更 */
 }
