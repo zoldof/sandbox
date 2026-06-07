@@ -52,7 +52,6 @@ button {
     padding: 7px;
     padding-right: 10px;
     box-sizing: border-box;
-    border-right: 8px solid #000000;
     overflow: auto;
     min-height: 0;
 
