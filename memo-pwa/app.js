@@ -28,15 +28,8 @@ document
     .getElementById("newBtn")
     .addEventListener("click", newFile);
 
-// filePicker を直接表示させず、ボタンで呼び出す
 document
     .getElementById('openFileBtn')
-    .addEventListener('click', () => {
-      document.getElementById('filePicker').click();
-    });
-
-document
-    .getElementById('filePicker')
     .addEventListener('change', openFile);
 
 document
@@ -65,8 +58,13 @@ async function openFile() {
         const file = await fileHandle.getFile();
         editor.value = await file.text();
 
-    } catch (error) {
-        console.error(error);
+    catch(error) {
+        if (error.name === "AbortError") {
+            return;
+        }
+    
+        editor.value =
+            `${error.name}\n${error.message}`;
     }
 }
 
