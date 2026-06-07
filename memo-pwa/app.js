@@ -51,11 +51,22 @@ document
     .getElementById("searchInput")
     .addEventListener("input", searchText);
 
-async function openFile(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const text = await file.text();
-        document.getElementById('editor').value = text;
+async function openFile() {
+    try {
+        [fileHandle] = await window.showOpenFilePicker({
+            types: [{
+                description: "Text Files",
+                accept: {
+                    "text/plain": [".txt"]
+                }
+            }]
+        });
+
+        const file = await fileHandle.getFile();
+        editor.value = await file.text();
+
+    } catch (error) {
+        console.error(error);
     }
 }
 
