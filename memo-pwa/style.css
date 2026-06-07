@@ -1,6 +1,7 @@
 html, body {
     height: 96%;
     margin: 0;
+    scrollbar-color: saddlebrown;
 }
 
 body {
@@ -51,9 +52,4 @@ button {
     resize: none;
     border: none;
     outline: none;
-}
-
-/* つまみ（現在地点）だけを装飾 */
-::-webkit-scrollbar-thumb {
-    background-color: saddlebrown;   /* 好きな色に変更 */
 }
