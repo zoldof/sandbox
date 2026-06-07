@@ -36,7 +36,12 @@ button {
 }
 
 #editor {
-    background: sandybrown;
+    background: 
+        linear-gradient(
+            to left,
+            saddlebrown 12px,
+            sandybrown 12px
+        );
     color: black;
     height: 100%;
 
@@ -45,6 +50,7 @@ button {
     
     line-height: 1.2; 
     padding: 7px;
+    padding-right: 12px;
     box-sizing: border-box;
     border-right: 8px solid #000000;
     overflow: auto;
