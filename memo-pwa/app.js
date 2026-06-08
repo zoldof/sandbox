@@ -55,7 +55,7 @@ document
     .addEventListener("input", searchText);
 
 /** リスナーの動作設定 **/
-async function newFile() {
+function newFile() {
     editor.value = "";
     currentFileName = "memo.txt";
     fileHandle = null;
@@ -82,27 +82,17 @@ function downloadText(text, filename) {
     URL.revokeObjectURL(url);
 }
 
-async function saveFile() {
+function saveFile() {
     if (editor.value.trim() === "") return;
     downloadText(editor.value, currentFileName);
 }
 
-async function saveAsFile() {
-    try {
-        fileHandle =
-            await window.showSaveFilePicker({
-                suggestedName: "memo.txt",
-                types: [{
-                    description: "Text Files",
-                    accept: {
-                        "text/plain": [".txt"]
-                    }
-                }]
-            });
-        await saveFile();
-    } catch (error) {
-        console.error(error);
-    }
+function saveAsFile() {
+    if (!editor.value.trim()) return;
+    const fileName = prompt("ファイル名を入力", currentFileName);
+    if (!fileName) return;
+    currentFileName = fileName;
+    saveFile();
 }
 
 function searchText(event) {
