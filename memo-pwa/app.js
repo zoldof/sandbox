@@ -22,6 +22,7 @@ toggleBtn.addEventListener('click', () => {
 
 /* ==== 3. ヘッダー内部設定 ==== */
 let fileHandle = null;
+let currentFileName = "";
 const editor = document.getElementById("editor");
 
 document
@@ -54,28 +55,34 @@ document
 async function openFile(event) {
     const file = event.target.files[0];
     if (file) {
-        const text = await file.text();
-        editor.value = text;
+        currentFileName = file.name;
+        editor.value = await file.text();
     }
 }
 
 async function newFile() {
     editor.value = "";
+    currentFileName = "memo.txt";
     fileHandle = null;
 }
 
 async function saveFile() {
-    try {
-        if (!fileHandle) {
-            await saveAsFile();
-            return;
-        }
-        const writable = await fileHandle.createWritable();
-        await writable.write( editor.value );
-        await writable.close();
-    } catch (error) {
-        console.error(error);
-    }
+    const blob = new Blob(
+        [editor.value],
+        { type: "text/plain" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = currentFileName;
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url);
 }
 
 async function saveAsFile() {
