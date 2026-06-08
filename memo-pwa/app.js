@@ -22,7 +22,7 @@ toggleBtn.addEventListener('click', () => {
 
 /* ==== 3. ヘッダー内部設定 ==== */
 let fileHandle = null;
-let currentFileName = "";
+let currentFileName = "default.txt";
 const editor = document.getElementById("editor");
 
 document
