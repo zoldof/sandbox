@@ -21,10 +21,12 @@ toggleBtn.addEventListener('click', () => {
 });
 
 /* ==== 3. ヘッダー内部設定 ==== */
+/** グローバル変数設定 **/
 let fileHandle = null;
 let currentFileName = "memo.txt";
 const editor = document.getElementById("editor");
 
+/** 要素取得とリスナーの設定 **/
 document
     .getElementById("newBtn")
     .addEventListener("click", newFile);
@@ -52,6 +54,13 @@ document
     .getElementById("searchInput")
     .addEventListener("input", searchText);
 
+/** リスナーの動作設定 **/
+async function newFile() {
+    editor.value = "";
+    currentFileName = "memo.txt";
+    fileHandle = null;
+}
+
 async function openFile(event) {
     const file = event.target.files[0];
     if (file) {
@@ -60,32 +69,22 @@ async function openFile(event) {
     }
 }
 
-async function newFile() {
-    editor.value = "";
-    currentFileName = "memo.txt";
-    fileHandle = null;
-}
-
-async function saveFile() {
-    if (editor.value.trim() === "") {
-        return;
-    }
-    const blob = new Blob(
-        [editor.value],
-        { type: "text/plain" }
-    );
-
+function downloadText(text, filename) {
+    const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
 
     a.href = url;
-    a.download = currentFileName;
-
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-
     URL.revokeObjectURL(url);
+}
+
+async function saveFile() {
+    if (editor.value.trim() === "") return;
+    downloadText(editor.value, currentFileName);
 }
 
 async function saveAsFile() {
