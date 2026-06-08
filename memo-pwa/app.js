@@ -30,7 +30,7 @@ document
 
 document
     .getElementById('openFileBtn')
-    .addEventListener('change', openFile);
+    .addEventListener("click", openFile);
 
 document
     .getElementById("saveBtn")
@@ -58,7 +58,7 @@ async function openFile() {
         const file = await fileHandle.getFile();
         editor.value = await file.text();
 
-    catch(error) {
+    } catch(error) {
         if (error.name === "AbortError") {
             return;
         }
