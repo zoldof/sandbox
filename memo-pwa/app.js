@@ -22,7 +22,7 @@ toggleBtn.addEventListener('click', () => {
 
 /* ==== 3. ヘッダー内部設定 ==== */
 let fileHandle = null;
-let currentFileName = "default.txt";
+let currentFileName = "memo.txt";
 const editor = document.getElementById("editor");
 
 document
@@ -67,6 +67,9 @@ async function newFile() {
 }
 
 async function saveFile() {
+    if (editor.value.trim() === "") {
+        return;
+    }
     const blob = new Blob(
         [editor.value],
         { type: "text/plain" }
