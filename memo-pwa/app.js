@@ -1,6 +1,6 @@
 /* ==== 1. ヘッダー表示フラグ ==== */
 let showHeader = true;               // 初期状態は表示
-let currentPage = "";
+let currentPage = "memo";
 const headerEl = document.getElementById('appHeader');
 const toggleBtn = document.getElementById('toggleHeaderBtn');
 
