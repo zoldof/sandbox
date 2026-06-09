@@ -5,19 +5,18 @@ const headerEl = document.getElementById('appHeader');
 const toggleBtn = document.getElementById('toggleHeaderBtn');
 
 /* ==== 2. トグル処理 ==== */
-function updateHeaderVisibility() {
-  if (showHeader) {
-    headerEl.style.display = 'flex';   // 必要なら CSS で layout を整える
-    toggleBtn.textContent = `▲ ${currentPage}`;
-  } else {
-    headerEl.style.display = 'none';
-    toggleBtn.textContent = `▼ ${currentPage}`;
-  }
+function updateHeaderLabel() {
+    toggleBtn.textContent = `${showHeader ? '▲' : '▼'} ${currentPage}`;
 }
 
-function refreshHeaderLabel() { 
+function updateHeaderVisibility() {
+    headerEl.style.display = showHeader ? 'flex' : 'none';
+    updateHeaderLabel();
+}
+
+function refreshHeaderLabel() {
     currentPage = currentFileName.replace(".txt", "");
-    toggleBtn.textContent = `${showHeader ? '▲' : '▼'} ${currentPage}`;
+    updateHeaderLabel();
 }
 
 /* ボタンにハンドラを登録 */
