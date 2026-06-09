@@ -7,11 +7,15 @@ const toggleBtn = document.getElementById('toggleHeaderBtn');
 function updateHeaderVisibility() {
   if (showHeader) {
     headerEl.style.display = 'flex';   // 必要なら CSS で layout を整える
-    toggleBtn.textContent = '▲';
+    toggleBtn.textContent = '▲ ${currentFileName}`;
   } else {
     headerEl.style.display = 'none';
-    toggleBtn.textContent = '▼';
+    toggleBtn.textContent = '▼ ${currentFileName}`;
   }
+}
+
+function refreshHeaderLabel() {
+    toggleBtn.textContent = `${showHeader ? '▲' : '▼'} ${currentFileName}`;
 }
 
 /* ボタンにハンドラを登録 */
@@ -53,13 +57,14 @@ document
 function newFile() {
     editor.value = "";
     currentFileName = "memo.txt";
-    fileHandle = null;
+    refreshHeaderLabel();
 }
 
 async function openFile(event) {
     const file = event.target.files[0];
     if (file) {
         currentFileName = file.name;
+        refreshHeaderLabel();
         editor.value = await file.text();
     }
 }
@@ -87,6 +92,7 @@ function saveAsFile() {
     const fileName = prompt("ファイル名を入力", currentFileName);
     if (!fileName) return;
     currentFileName = fileName;
+    refreshHeaderLabel();
     saveFile();
 }
 
