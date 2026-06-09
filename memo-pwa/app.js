@@ -22,7 +22,6 @@ toggleBtn.addEventListener('click', () => {
 
 /* ==== 3. ヘッダー内部設定 ==== */
 /** グローバル変数設定 **/
-let fileHandle = null;
 let currentFileName = "memo.txt";
 const editor = document.getElementById("editor");
 
