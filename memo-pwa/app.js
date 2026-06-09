@@ -1,5 +1,6 @@
 /* ==== 1. ヘッダー表示フラグ ==== */
 let showHeader = true;               // 初期状態は表示
+let currentPage = "";
 const headerEl = document.getElementById('appHeader');
 const toggleBtn = document.getElementById('toggleHeaderBtn');
 
@@ -7,15 +8,16 @@ const toggleBtn = document.getElementById('toggleHeaderBtn');
 function updateHeaderVisibility() {
   if (showHeader) {
     headerEl.style.display = 'flex';   // 必要なら CSS で layout を整える
-    toggleBtn.textContent = `▲ ${currentFileName}`;
+    toggleBtn.textContent = `▲ ${currentPage}`;
   } else {
     headerEl.style.display = 'none';
-    toggleBtn.textContent = `▼ ${currentFileName}`;
+    toggleBtn.textContent = `▼ ${currentPage}`;
   }
 }
 
-function refreshHeaderLabel() {
-    toggleBtn.textContent = `${showHeader ? '▲' : '▼'} ${currentFileName}`;
+function refreshHeaderLabel() { 
+    currentPage = currentFileName.replace(".txt", "");
+    toggleBtn.textContent = `${showHeader ? '▲' : '▼'} ${currentPage}`;
 }
 
 /* ボタンにハンドラを登録 */
