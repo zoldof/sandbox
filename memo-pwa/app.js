@@ -49,10 +49,6 @@ document
     .getElementById("saveAsBtn")
     .addEventListener("click", saveAsFile);
 
-document
-    .getElementById("searchInput")
-    .addEventListener("input", searchText);
-
 /** リスナーの動作設定 **/
 function newFile() {
     editor.value = "";
@@ -92,23 +88,6 @@ function saveAsFile() {
     if (!fileName) return;
     currentFileName = fileName;
     saveFile();
-}
-
-function searchText(event) {
-    const keyword =
-        event.target.value;
-    if (!keyword) {
-        return;
-    }
-    const pos = editor.value.indexOf(keyword);
-    if (pos === -1) {
-        return;
-    }
-    editor.focus();
-    editor.setSelectionRange(
-        pos,
-        pos + keyword.length
-    );
 }
 
 if ("serviceWorker" in navigator) {
