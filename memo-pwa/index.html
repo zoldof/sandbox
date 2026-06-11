@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <textarea id="editor"></textarea>
     <div id="topArea">
+        <button id="toggleHeaderBtn">▼ memo</button>
         <header id="appHeader">
             <button id="newBtn">新規</button>
             <input type="file" accept=".txt" id="filePicker" style="display:none;" />
@@ -18,10 +20,7 @@
             <button id="saveBtn">保存</button>
             <button id="saveAsBtn">名前を付けて保存</button>
         </header>
-        <button id="toggleHeaderBtn">▲ memo</button>
     </div>
-    <textarea id="editor"></textarea>
-    <div id="bottomArea">あああ</div>
     <script src="app.js"></script>
 </body>
 </html>
