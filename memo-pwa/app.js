@@ -6,7 +6,7 @@ const toggleBtn = document.getElementById('toggleHeaderBtn');
 
 /* ==== 2. トグル処理 ==== */
 function updateHeaderLabel() {
-    toggleBtn.textContent = `${showHeader ? '▲' : '▼'} ${currentPage}`;
+    toggleBtn.textContent = `${showHeader ? '▼' : '▲'} ${currentPage}`;
 }
 
 function updateHeaderVisibility() {
