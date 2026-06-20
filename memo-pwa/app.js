@@ -92,6 +92,7 @@ function saveAsFile() {
     if (!editor.value.trim()) return;
     const fileName = prompt("ファイル名を入力", currentFileName);
     if (!fileName) return;
+    if (!fileName.endsWith(".txt")) fileName += ".txt";
     currentFileName = fileName;
     refreshHeaderLabel();
     saveFile();
