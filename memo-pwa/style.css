@@ -42,7 +42,7 @@ button {
             black 3px,
             sandybrown 3px
         );
-    color: white;
+    color: rgb(0, 0, 0);
     flex: 1;
 
     font-size: 16px;
