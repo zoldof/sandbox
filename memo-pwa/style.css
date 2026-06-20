@@ -1,7 +1,5 @@
 html, body {
     background-color: saddlebrown;
-    color-scheme: light;
-    forced-color-adjust: none;
     height: 100%;
     margin: 0;
 }
@@ -44,7 +42,7 @@ button {
             black 3px,
             sandybrown 3px
         );
-    color: #222;
+    color: white;
     flex: 1;
 
     font-size: 16px;
