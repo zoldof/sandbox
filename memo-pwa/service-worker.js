@@ -32,11 +32,16 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
+     if(event.request.mode === "navigate"){
+        event.respondWith(
+            caches.match("./index.html")
+        );
+        return;
+    }
     event.respondWith(
         caches.match(event.request)
-        .then(cached => {
-            if(cached) return cached;
-            return fetch(event.request);
+        .then(response => {
+            return response || fetch(event.request);
         })
     );
 });
