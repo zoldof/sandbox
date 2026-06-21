@@ -1,4 +1,4 @@
-const CACHE_NAME = "memo-pwa-v4";
+const CACHE_NAME = "memo-pwa-v5";
 
 const FILES = [
     "./",
