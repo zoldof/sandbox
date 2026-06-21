@@ -1,0 +1,62 @@
+html, body {
+    background-color: saddlebrown;
+    color-scheme: only light;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+}
+
+#topArea {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: sandybrown;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 8px;
+}
+
+button {
+    background-color: saddlebrown;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#toggleHeaderBtn {
+    border-radius: 0;
+}
+
+#editor {
+    background: 
+        linear-gradient(
+            to left,
+            black 3px,
+            sandybrown 3px
+        );
+    color: black;
+    flex: 1;
+
+    font-size: 16px;
+    font-weight: 600; 
+    
+    line-height: 1.2; 
+    padding: 7px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    min-height: 0;
+
+    resize: none;
+    border: none;
+    outline: none;
+}
